@@ -1,0 +1,10 @@
+export(SimTestDiff, SimTestRat,
+       SimSciDiff, SimSciRat)
+
+import(mvtnorm, multcomp, mratios)
+
+S3method(print, SimTest)
+S3method(summary, SimTest)
+
+S3method(print, SimSci)
+S3method(summary, SimSci)
