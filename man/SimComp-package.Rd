@@ -36,7 +36,7 @@ Hannover.
 
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast
 tests in the presence of heteroscedasticity.
-\emph{Biometrical Journal} (accepted).
+\emph{Biometrical Journal} 50, 793-800.
 }
 \keyword{ package }
 \seealso{ \code{\link[<multtest>:<multtest>-package]{multtest}},
@@ -45,6 +45,6 @@ tests in the presence of heteroscedasticity.
 \examples{
 data(iris)
 
-comp <- SimTestRat(data=iris,grp="Species", alternative="greater", Margin=0.8)
+comp <- SimTestRat(data=iris, grp="Species", alternative="greater", Margin=0.8)
 summary(comp)
 }

@@ -1,4 +1,4 @@
-`SimSciRat` <-
+`SimCiRat` <-
 function(data,grp,resp=NULL,type="Dunnett",base=1,Num.Contrast=NULL,Den.Contrast=NULL,
                       alternative="two.sided",covar.equal=FALSE,conf.level=0.95) {
 
@@ -96,10 +96,10 @@ if (length(conf.level)>1 || !is.numeric(conf.level) || conf.level>=1 || conf.lev
 }
 
 if (covar.equal==TRUE) {
-  out <- SimSciRatHom(trlist=trlist, grp=grp, ntr=ntr, nep=nep, ssvec=ssvec, Num.Contrast=Num.Cmat, Den.Contrast=Den.Cmat,
+  out <- SimCiRatHom(trlist=trlist, grp=grp, ntr=ntr, nep=nep, ssvec=ssvec, Num.Contrast=Num.Cmat, Den.Contrast=Den.Cmat,
                       alternative=alternative, conf.level=conf.level)
 } else {
-  out <- SimSciRatHet(trlist=trlist, grp=grp, ntr=ntr, nep=nep, ssvec=ssvec, Num.Contrast=Num.Cmat, Den.Contrast=Den.Cmat,
+  out <- SimCiRatHet(trlist=trlist, grp=grp, ntr=ntr, nep=nep, ssvec=ssvec, Num.Contrast=Num.Cmat, Den.Contrast=Den.Cmat,
                       alternative=alternative, conf.level=conf.level)
 }
 out$type <- type
@@ -119,7 +119,7 @@ if (covar.equal==FALSE) {
   rownames(out$degr.fr) <- comp.names; colnames(out$degr.fr) <- resp
   names(out$CorrMatDat) <- tr.names
 }
-class(out) <- "SimSci"
+class(out) <- "SimCi"
 return(out)
 
 }

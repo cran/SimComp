@@ -1,4 +1,4 @@
-`SimSciDiffHom` <-
+`SimCiDiffHom` <-
 function(trlist, grp, ntr, nep, ssvec, Cmat, alternative, conf.level) {
 
 

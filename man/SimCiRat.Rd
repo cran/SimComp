@@ -1,5 +1,5 @@
-\name{SimSciRat}
-\alias{SimSciRat}
+\name{SimCiRat}
+\alias{SimCiRat}
 \title{ Simultaneous Confidence Intervals for Ratios of Means of Multiple Endpoints }
 \description{
 Simultaneous confidence intervals for ratios of contrasts (linear functions) of
@@ -10,7 +10,7 @@ applied for ratios of means of normally distributed data. The covariance matrice
 possibly unequal for the different groups.
 }
 \usage{
-SimSciRat(data, grp, resp = NULL, type = "Dunnett", base = 1, Num.Contrast = NULL,
+SimCiRat(data, grp, resp = NULL, type = "Dunnett", base = 1, Num.Contrast = NULL,
           Den.Contrast = NULL, alternative = "two.sided", covar.equal = FALSE,
           conf.level = 0.95)
 }
@@ -79,7 +79,7 @@ covariance matrices occure if either variances or correlations of some endpoints
 differ depending on the treatment groups.
 }
 \value{
-An object of class SimSci containing:
+An object of class SimCi containing:
 \item{estimate}{ a matrix of estimated differences }
 \item{lower.raw}{ a matrix of raw (unadjusted) lower limits }
 \item{upper.raw}{ a matrix of raw (unadjusted) upper limits }
@@ -116,19 +116,19 @@ Hasler, M. (2008): Extensions of Multiple Contrast Tests. \emph{PhD Thesis},
 Gottfried-Wilhelm-Leibniz-Universitaet Hannover.
 
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence
-of heteroscedasticity. \emph{Biometrical Journal} (accepted).
+of heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.
 
 Dilba, G., Bretz, F., and Guiard, V. (2006): Simultaneous confidence sets and
 confidence intervals for multiple ratios. \emph{Journal of Statistical Planning and
 Inference} 136, 2640-2658.
 }
 \author{ Mario Hasler }
-\seealso{ \code{\link{SimSciDiff}}, \code{\link{SimTestRat}},
+\seealso{ \code{\link{SimCiDiff}}, \code{\link{SimTestRat}},
           \code{\link{SimTestDiff}},  }
 \examples{
 data(iris)
 
-interv <- SimSciRat(data=iris, grp="Species")
+interv <- SimCiRat(data=iris, grp="Species")
 summary(interv)
 }
 \keyword{ htest }

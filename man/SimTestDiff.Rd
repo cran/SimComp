@@ -105,11 +105,11 @@ Hasler, M. (2008): Extensions of Multiple Contrast Tests. \emph{PhD Thesis},
 Gottfried-Wilhelm-Leibniz-Universitaet Hannover.
 
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence
-of heteroscedasticity. \emph{Biometrical Journal} (accepted).
+of heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.
 }
 \author{ Mario Hasler }
-\seealso{ \code{\link{SimTestRat}}, \code{\link{SimSciDiff}},
-          \code{\link{SimSciRat}},  }
+\seealso{ \code{\link{SimTestRat}}, \code{\link{SimCiDiff}},
+          \code{\link{SimCiRat}},  }
 \examples{
 data(iris)
 

@@ -1,8 +1,8 @@
 Package: SimComp
 Type: Package
 Title: Simultaneous Comparisons for Multiple Endpoints
-Version: 1.0
-Date: 2008-10-23
+Version: 1.1
+Date: 2008-11-25
 Author: Mario Hasler
 Suggests: multcomp, mratios
 Imports: mvtnorm, multcomp, mratios
@@ -16,4 +16,4 @@ Description: Simultaneous tests and confidence intervals for general
              be assumed to be equal or possibly unequal for the
              different groups.
 License: GPL
-Packaged: Fri Oct 24 12:47:43 2008; Mario
+Packaged: Mon Nov 24 18:14:42 2008; Mario

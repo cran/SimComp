@@ -1,4 +1,4 @@
-`SimSciDiff` <-
+`SimCiDiff` <-
 function(data,grp,resp=NULL,type="Dunnett",base=1,ContrastMat=NULL,
                        alternative="two.sided",covar.equal=FALSE,conf.level=0.95) {
 
@@ -72,10 +72,10 @@ if (length(conf.level)>1 || !is.numeric(conf.level) || conf.level>=1 || conf.lev
 }
 
 if (covar.equal==TRUE) {
-  out <- SimSciDiffHom(trlist=trlist, grp=grp, ntr=ntr, nep=nep, ssvec=ssvec, Cmat=Cmat,
+  out <- SimCiDiffHom(trlist=trlist, grp=grp, ntr=ntr, nep=nep, ssvec=ssvec, Cmat=Cmat,
                        alternative=alternative, conf.level=conf.level)
 } else {
-  out <- SimSciDiffHet(trlist=trlist, grp=grp, ntr=ntr, nep=nep, ssvec=ssvec, Cmat=Cmat,
+  out <- SimCiDiffHet(trlist=trlist, grp=grp, ntr=ntr, nep=nep, ssvec=ssvec, Cmat=Cmat,
                        alternative=alternative, conf.level=conf.level)
 }
 out$type <- type
@@ -94,7 +94,7 @@ if (covar.equal==FALSE) {
   rownames(out$degr.fr) <- comp.names; colnames(out$degr.fr) <- resp
   names(out$CorrMatDat) <- tr.names
 }
-class(out) <- "SimSci"
+class(out) <- "SimCi"
 return(out)
 
 }

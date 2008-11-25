@@ -1,4 +1,4 @@
-`summary.SimSci` <-
+`summary.SimCi` <-
 function(object,digits=4,...) {
 
 

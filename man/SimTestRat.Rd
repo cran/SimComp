@@ -114,15 +114,15 @@ Hasler, M. (2008): Extensions of Multiple Contrast Tests. \emph{PhD Thesis},
 Gottfried-Wilhelm-Leibniz-Universitaet Hannover.
 
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence
-of heteroscedasticity. \emph{Biometrical Journal} (accepted).
+of heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.
 
 Dilba, G., Bretz, F., and Guiard, V. (2006): Simultaneous confidence sets and
 confidence intervals for multiple ratios. \emph{Journal of Statistical Planning and
 Inference} 136, 2640-2658.
 }
 \author{ Mario Hasler }
-\seealso{ \code{\link{SimTestDiff}}, \code{\link{SimSciRat}},
-          \code{\link{SimSciDiff}},  }
+\seealso{ \code{\link{SimTestDiff}}, \code{\link{SimCiRat}},
+          \code{\link{SimCiDiff}},  }
 \examples{
 data(iris)
 

@@ -20,5 +20,5 @@ adjusted p-values computed by \code{SimTestDiff} or \code{SimTestRat},
 respectively.
 }
 \author{ Mario Hasler }
-\seealso{ \code{\link{print.SimSci}} }
+\seealso{ \code{\link{print.SimCi}} }
 \keyword{ print }

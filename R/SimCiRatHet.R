@@ -1,4 +1,4 @@
-`SimSciRatHet` <-
+`SimCiRatHet` <-
 function(trlist, grp, ntr, nep, ssvec, Num.Contrast, Den.Contrast, alternative, conf.level) {
 
 

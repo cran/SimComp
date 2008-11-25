@@ -1,5 +1,5 @@
-\name{SimSciDiff}
-\alias{SimSciDiff}
+\name{SimCiDiff}
+\alias{SimCiDiff}
 \title{ Simultaneous Confidence Intervals for Differences of Means of Multiple Endpoints }
 \description{
 Simultaneous confidence intervals for general contrasts (linear functions) of
@@ -10,7 +10,7 @@ for differences of means of normally distributed data. The covariance matrices
 possibly unequal for the different groups.
 }
 \usage{
-SimSciDiff(data, grp, resp = NULL, type = "Dunnett", base = 1, ContrastMat = NULL,
+SimCiDiff(data, grp, resp = NULL, type = "Dunnett", base = 1, ContrastMat = NULL,
            alternative = "two.sided", covar.equal = FALSE, conf.level = 0.95)
 }
 \arguments{
@@ -71,7 +71,7 @@ covariance matrices occure if either variances or correlations of some endpoints
 differ depending on the treatment groups.
 }
 \value{
-An object of class SimSci containing:
+An object of class SimCi containing:
 \item{estimate}{ a matrix of estimated differences }
 \item{lower.raw}{ a matrix of raw (unadjusted) lower limits }
 \item{upper.raw}{ a matrix of raw (unadjusted) upper limits }
@@ -102,15 +102,15 @@ Hasler, M. (2008): Extensions of Multiple Contrast Tests. \emph{PhD Thesis},
 Gottfried-Wilhelm-Leibniz-Universitaet Hannover.
 
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence
-of heteroscedasticity. \emph{Biometrical Journal} (accepted).
+of heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.
 }
 \author{ Mario Hasler }
-\seealso{ \code{\link{SimSciRat}}, \code{\link{SimTestDiff}},
+\seealso{ \code{\link{SimCiRat}}, \code{\link{SimTestDiff}},
           \code{\link{SimTestRat}},  }
 \examples{
 data(iris)
 
-interv <- SimSciDiff(data=iris, grp="Species")
+interv <- SimCiDiff(data=iris, grp="Species")
 summary(interv)
 }
 \keyword{ htest }

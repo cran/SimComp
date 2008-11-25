@@ -1,4 +1,4 @@
-`print.SimSci` <-
+`print.SimCi` <-
 function(x,digits=4,...) {
 
 
