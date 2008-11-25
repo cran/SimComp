@@ -19,8 +19,8 @@ different groups.
 \tabular{ll}{
 Package: \tab SimComp\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2008-10-23\cr
+Version: \tab 1.2\cr
+Date: \tab 2008-11-25\cr
 License: \tab GPL\cr
 }
 }
