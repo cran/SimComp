@@ -9,7 +9,7 @@ Simultaneous Comparisons for Multiple Endpoints
 Simultaneous tests and confidence intervals for general
 linear hypotheses when there is more than one primary 
 response variable (endpoint). The procedure of Hasler
-(2008) is applied for differences or ratios of means of
+(2009) is applied for differences or ratios of means of
 normally distributed data. The covariance matrices
 (containing the covariances between the endpoints) may
 be assumed to be equal or possibly unequal for the
@@ -19,9 +19,10 @@ different groups.
 \tabular{ll}{
 Package: \tab SimComp\cr
 Type: \tab Package\cr
-Version: \tab 1.2\cr
-Date: \tab 2008-11-25\cr
+Version: \tab 1.3\cr
+Date: \tab 2009-03-25\cr
 License: \tab GPL\cr
+LazyLoad: \tab yes\cr
 }
 }
 \author{
@@ -30,9 +31,12 @@ Mario Hasler
 Maintainer: Mario Hasler <hasler@email.uni-kiel.de>
 }
 \references{
-Hasler, M. (2008): Extensions of Multiple Contrast Tests.
+Hasler, M. (2009): Extensions of Multiple Contrast Tests.
 \emph{PhD Thesis}, Gottfried-Wilhelm-Leibniz-Universitaet
 Hannover.
+
+Hasler, M. and Hothorn, L.A. (submitted): A Dunnett-type
+Procedure for Multiple Endpoints
 
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast
 tests in the presence of heteroscedasticity.

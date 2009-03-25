@@ -4,7 +4,7 @@
 \description{
 Simultaneous confidence intervals for ratios of contrasts (linear functions) of
 normal means (e.g., "Dunnett", "Tukey", "Williams" ect.) when there is more than
-one primary response variable (endpoint). The procedure of Hasler (2008) is
+one primary response variable (endpoint). The procedure of Hasler (2009) is
 applied for ratios of means of normally distributed data. The covariance matrices
 (containing the covariances between the endpoints) may be assumed to be equal or
 possibly unequal for the different groups.
@@ -69,7 +69,7 @@ all-pair comparison of Tukey (1953) and the many-to-one comparison of Dunnett (1
 for ratios of means are implemented, but allowing for multiple endpoints. Also, the
 user is free to create other interesting problem-specific contrasts. An approximate
 multivariate \emph{t}-distribution is used to calculate lower and upper limits (see
-Hasler, 2008). Simultaneous tests based on these intervals control the familywise
+Hasler, 2009). Simultaneous tests based on these intervals control the familywise
 error rate in the strong sense. The covariance matrices of the treatment groups
 (containing the covariances between the endpoints) can be assumed to be equal
 (\code{covar.equal=TRUE}) or unequal (\code{covar.equal=FALSE}). If being equal, the
@@ -112,8 +112,11 @@ the different groups are assumed to be unequal (\code{covar.equal=FALSE}). Both
 problems can be handled by a plug-in approach, see the references therefore.
 }
 \references{
-Hasler, M. (2008): Extensions of Multiple Contrast Tests. \emph{PhD Thesis},
+Hasler, M. (2009): Extensions of Multiple Contrast Tests. \emph{PhD Thesis},
 Gottfried-Wilhelm-Leibniz-Universitaet Hannover.
+
+Hasler, M. and Hothorn, L.A. (submitted): A Dunnett-type
+Procedure for Multiple Endpoints
 
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence
 of heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.

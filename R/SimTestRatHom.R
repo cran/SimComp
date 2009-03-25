@@ -47,7 +47,8 @@ for (z in 1:ncomp) { for (i in 1:nep) {
     p.val.adj[z,i]=1-pmvt(lower=rep(test.stat[z,i],times=ncomp*nep),upper=Inf,df=defr,corr=R)[1]
     p.val.raw[z,i]=pt(q=test.stat[z,i],df=defr,lower.tail=TRUE) }
   if (alternative=="two.sided") {
-    p.val.adj[z,i]=min((1-pmvt(lower=-Inf,upper=rep(abs(test.stat[z,i]),times=ncomp*nep),df=defr,corr=R)[1])*2,1)
+    p.val.adj[z,i]=1-pmvt(lower=rep(-abs(test.stat[z,i]),times=ncomp*nep),upper=rep(abs(test.stat[z,i]),times=ncomp*nep),
+                   df=defr,corr=R)[1]
     p.val.raw[z,i]=min(pt(q=abs(test.stat[z,i]),df=defr,lower.tail=FALSE)*2,1) }
 }}
 
