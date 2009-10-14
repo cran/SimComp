@@ -116,6 +116,11 @@ Gottfried-Wilhelm-Leibniz-Universitaet Hannover.
 Hasler, M. and Hothorn, L.A. (submitted): A Dunnett-type
 Procedure for Multiple Endpoints
 
+Hasler, M. and Hothorn, L.A. (submitted): Analysis of
+randomized clinical dose finding trials with correlated
+multiple endpoints using a multivariate Williams-type
+trend procedure
+
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence
 of heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.
 

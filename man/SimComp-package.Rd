@@ -19,8 +19,8 @@ different groups.
 \tabular{ll}{
 Package: \tab SimComp\cr
 Type: \tab Package\cr
-Version: \tab 1.3\cr
-Date: \tab 2009-03-25\cr
+Version: \tab 1.4.1\cr
+Date: \tab 2009-10-14\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }
@@ -38,14 +38,17 @@ Hannover.
 Hasler, M. and Hothorn, L.A. (submitted): A Dunnett-type
 Procedure for Multiple Endpoints
 
+Hasler, M. and Hothorn, L.A. (submitted): Analysis of
+randomized clinical dose finding trials with correlated
+multiple endpoints using a multivariate Williams-type
+trend procedure
+
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast
 tests in the presence of heteroscedasticity.
 \emph{Biometrical Journal} 50, 793-800.
 }
 \keyword{ package }
-\seealso{ \code{\link[<multtest>:<multtest>-package]{multtest}},
-          \code{\link[<multcomp>:<multcomp>-package]{multcomp}},
-          \code{\link[<mratios>:<mratios>-package]{mratios}} }
+\seealso{ \code{\link[mratios:mratios-package]{mratios}} }
 \examples{
 data(iris)
 
