@@ -6,21 +6,46 @@
 Simultaneous Comparisons for Multiple Endpoints
 }
 \description{
-Simultaneous tests and confidence intervals for general
-linear hypotheses when there is more than one primary 
-response variable (endpoint). The procedure of Hasler
-(2009) is applied for differences or ratios of means of
-normally distributed data. The covariance matrices
-(containing the covariances between the endpoints) may
-be assumed to be equal or possibly unequal for the
-different groups.
+This package provides simultaneous tests and confidence
+intervals for one-way experimental designs with one or
+many normally distributed, primary response variables
+(endpoints). Means of several groups or dose levels can
+be compared
+\itemize{
+  \item by arbitrary contrasts, like the Dunnett or the
+    Tukey test,
+  \item for balanced or unbalanced sample sizes,
+  \item for homogeneous or heterogeneous group
+    variances,
+  \item for a single endpoint or for many endpoints
+    simultaneously, and
+  \item in terms of differences or ratios.
+  }
+If many endpoints are to be analyzed, the covariance
+matrices (containing the covariances between the
+endpoints) may be assumed to be equal or unequal for
+the different groups. Exact or approximate multivariate
+t-distributions, respectively, are used for quantiles
+or p-values.
+
+For example, the well-known conventional all-pair
+comparison of Tukey (1953) can be performed by
+specifying only a single endpoint and homogeneous (co-)
+variances. On the other hand, it's also possible to the
+same, but for many endpoints simultaneously, with
+heterogeneous covariance matrices and in terms of
+ratios.
+
+For multiple comparisons of means of heteroscedastic
+data, see Hasler and Hothorn (2008). The test procedure
+for multiple endpoints is described by Hasler (2009).
 }
 \details{
 \tabular{ll}{
 Package: \tab SimComp\cr
 Type: \tab Package\cr
-Version: \tab 1.4.1\cr
-Date: \tab 2009-10-14\cr
+Version: \tab 1.4.2\cr
+Date: \tab 2009-10-22\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }
@@ -37,11 +62,6 @@ Hannover.
 
 Hasler, M. and Hothorn, L.A. (submitted): A Dunnett-type
 Procedure for Multiple Endpoints
-
-Hasler, M. and Hothorn, L.A. (submitted): Analysis of
-randomized clinical dose finding trials with correlated
-multiple endpoints using a multivariate Williams-type
-trend procedure
 
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast
 tests in the presence of heteroscedasticity.

@@ -7,7 +7,8 @@ Simultaneous tests for ratios of contrasts (linear functions) of normal means (e
 variable (endpoint). The procedure of Hasler (2009) is applied for ratios of means
 of normally distributed data. The covariance matrices (containing the covariances
 between the endpoints) may be assumed to be equal or possibly unequal for the
-different groups.
+different groups. For the case of only a single endpoint, the procedure reduces to
+the PI procedure of Hasler and Hothorn (2008).
 }
 \usage{
 SimTestRat(data, grp, resp = NULL, type = "Dunnett", base = 1, Num.Contrast = NULL,
@@ -115,11 +116,6 @@ Gottfried-Wilhelm-Leibniz-Universitaet Hannover.
 
 Hasler, M. and Hothorn, L.A. (submitted): A Dunnett-type
 Procedure for Multiple Endpoints
-
-Hasler, M. and Hothorn, L.A. (submitted): Analysis of
-randomized clinical dose finding trials with correlated
-multiple endpoints using a multivariate Williams-type
-trend procedure
 
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence
 of heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.
