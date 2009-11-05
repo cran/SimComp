@@ -115,9 +115,25 @@ of heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.
 \seealso{ \code{\link{SimTestRat}}, \code{\link{SimCiDiff}},
           \code{\link{SimCiRat}},  }
 \examples{
-data(iris)
+# Example 1:
+# A Dunnett-test for the groups B and H against the standard S, on
+# the (single) endpoint Thromb.count, assuming unequal variances for
+# the groups. This is the well-known Dunnett-test but in the
+# presence of heteroscedasticity.
 
-comp <- SimTestDiff(data=iris, grp="Species", alternative="greater", Margin=1)
-summary(comp)
+data(coagulation)
+
+comp1 <- SimTestDiff(data=coagulation, grp="Group", resp="Thromb.count", type="Dunnett", base=3, alternative="greater", covar.equal=FALSE)
+comp1
+
+# Example 2:
+# A Dunnett-test for the groups B and H against the standard S,
+# simultaneously on all endpoints, assuming unequal covariance
+# matrices for the groups.
+
+data(coagulation)
+
+comp2 <- SimTestDiff(data=coagulation, grp="Group", resp=c("Thromb.count","ADP","TRAP"), type="Dunnett", alternative="greater", covar.equal=FALSE)
+summary(comp2)
 }
 \keyword{ htest }

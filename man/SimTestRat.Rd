@@ -128,9 +128,25 @@ Inference} 136, 2640-2658.
 \seealso{ \code{\link{SimTestDiff}}, \code{\link{SimCiRat}},
           \code{\link{SimCiDiff}},  }
 \examples{
-data(iris)
+# Example 1:
+# A Dunnett-test for the groups B and H against the standard S, on the (single)
+# endpoint Thromb.count, assuming unequal variances for the groups, and in terms of
+# ratios. This is the well-known Dunnett-test but in the presence of
+# heteroscedasticity and for ratios of means.
 
-comp <- SimTestRat(data=iris, grp="Species", alternative="greater", Margin=0.8)
-summary(comp)
+data(coagulation)
+
+comp1 <- SimTestRat(data=coagulation, grp="Group", resp="Thromb.count", type="Dunnett", base=3, alternative="greater", covar.equal=FALSE)
+comp1
+
+# Example 2:
+# A Dunnett-test for the groups B and H against the standard S, simultaneously on
+# all endpoints, assuming unequal covariance matrices for the groups, and in terms
+# of ratios.
+
+data(coagulation)
+
+comp2 <- SimTestRat(data=coagulation, grp="Group", resp=c("Thromb.count","ADP","TRAP"), type="Dunnett", alternative="greater", covar.equal=FALSE)
+summary(comp2)
 }
 \keyword{ htest }

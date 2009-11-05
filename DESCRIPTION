@@ -1,12 +1,13 @@
 Package: SimComp
 Type: Package
 Title: Simultaneous Comparisons for Multiple Endpoints
-Version: 1.4.2
-Date: 2009-10-22
+Version: 1.4.3
+Date: 2009-11-05
 Author: Mario Hasler
 Suggests: multcomp, mratios
 Imports: mvtnorm, multcomp, mratios
 Maintainer: Mario Hasler <hasler@email.uni-kiel.de>
+Depends: R (>= 2.10.0)
 Description: Simultaneous tests and confidence intervals for one-way
         experimental designs with one or many normally distributed,
         primary response variables (endpoints). The procedure of Hasler
@@ -14,6 +15,6 @@ Description: Simultaneous tests and confidence intervals for one-way
         contrasts can be chosen, unbalanced sample sizes are allowed as
         well as heterogeneous covariance matrices.
 License: GPL
-Packaged: Thu Oct 22 15:39:23 2009; Mario
+Packaged: 2009-11-05 11:03:50 UTC; Mario
 Repository: CRAN
-Date/Publication: 2009-10-22 18:37:38
+Date/Publication: 2009-11-05 19:43:27

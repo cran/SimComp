@@ -130,9 +130,26 @@ Inference} 136, 2640-2658.
 \seealso{ \code{\link{SimCiDiff}}, \code{\link{SimTestRat}},
           \code{\link{SimTestDiff}},  }
 \examples{
-data(iris)
+# Example 1:
+# Simultaneous confidence intervals for ratios of means, related to a
+# Dunnett-test for the groups B and H against the standard S, on the (single)
+# endpoint Thromb.count, assuming unequal variances for the groups. These are the
+# well-known Dunnett-intervals but in the presence of heteroscedasticity and for
+# ratios of means.
 
-interv <- SimCiRat(data=iris, grp="Species")
-summary(interv)
+data(coagulation)
+
+interv1 <- SimCiRat(data=coagulation, grp="Group", resp="Thromb.count", type="Dunnett", base=3, alternative="greater", covar.equal=FALSE)
+interv1
+
+# Example 2:
+# Simultaneous confidence intervals for ratios of means, related to a
+# Dunnett-test for the groups B and H against the standard S, simultaneously on
+# all endpoints, assuming unequal covariance matrices for the groups.
+
+data(coagulation)
+
+interv2 <- SimCiRat(data=coagulation, grp="Group", resp=c("Thromb.count","ADP","TRAP"), type="Dunnett", base=3, alternative="greater", covar.equal=FALSE)
+summary(interv2)
 }
 \keyword{ htest }

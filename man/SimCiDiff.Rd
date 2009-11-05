@@ -60,16 +60,15 @@ The interest is in simultaneous confidence intervals for several linear combinat
 multiple endpoints. For example, corresponding intervals for the all-pair comparison
 of Tukey (1953) and the many-to-one comparison of Dunnett (1955) are implemented,
 but allowing for multiple endpoints. Also, the user is free to create other
-interesting problem-specific contrasts. An approximate multivariate \emph{t}-
-distribution is used to calculate lower and upper limits (see Hasler, 2009).
-Simultaneous tests based on these intervals control the familywise error rate in the
-strong sense. The covariance matrices of the treatment groups (containing the
-covariances between the endpoints) can be assumed to be equal
-(\code{covar.equal=TRUE}) or unequal (\code{covar.equal=FALSE}). If being equal, the
-pooled covariance matrix is used, otherwise the Satterthwaite approximation to the
-degrees of freedom is used according to Hasler and Hothorn (2008). Unequal
-covariance matrices occure if either variances or correlations of some endpoints
-differ depending on the treatment groups.
+interesting problem-specific contrasts. An approximate multivariate t-distribution
+is used to calculate lower and upper limits (see Hasler, 2009). Simultaneous tests
+based on these intervals control the familywise error rate in the strong sense. The
+covariance matrices of the treatment groups (containing the covariances between the
+endpoints) can be assumed to be equal (\code{covar.equal=TRUE}) or unequal
+(\code{covar.equal=FALSE}). If being equal, the pooled covariance matrix is used,
+otherwise the Satterthwaite approximation to the degrees of freedom is used
+according to Hasler and Hothorn (2008). Unequal covariance matrices occure if either
+variances or correlations of some endpoints differ depending on the treatment groups.
 }
 \value{
 An object of class SimCi containing:
@@ -112,9 +111,25 @@ of heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.
 \seealso{ \code{\link{SimCiRat}}, \code{\link{SimTestDiff}},
           \code{\link{SimTestRat}},  }
 \examples{
-data(iris)
+# Example 1:
+# Simultaneous confidence intervals related to a Dunnett-test for the groups
+# B and H against the standard S, on the (single) endpoint Thromb.count,
+# assuming unequal variances for the groups. These are the well-known
+# Dunnett-intervals but in the presence of heteroscedasticity.
 
-interv <- SimCiDiff(data=iris, grp="Species")
-summary(interv)
+data(coagulation)
+
+interv1 <- SimCiDiff(data=coagulation, grp="Group", resp="Thromb.count", type="Dunnett", base=3, alternative="greater", covar.equal=FALSE)
+interv1
+
+# Example 2:
+# Simultaneous confidence intervals related to a Dunnett-test for the groups
+# B and H against the standard S, simultaneously on all endpoints, assuming
+# unequal covariance matrices for the groups.
+
+data(coagulation)
+
+interv2 <- SimCiDiff(data=coagulation, grp="Group", resp=c("Thromb.count","ADP","TRAP"), type="Dunnett", base=3, alternative="greater", covar.equal=FALSE)
+summary(interv2)
 }
 \keyword{ htest }

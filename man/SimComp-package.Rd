@@ -15,24 +15,20 @@ be compared
   \item by arbitrary contrasts, like the Dunnett or the
     Tukey test,
   \item for balanced or unbalanced sample sizes,
-  \item for homogeneous or heterogeneous group
-    variances,
   \item for a single endpoint or for many endpoints
-    simultaneously, and
+    simultaneously,
+  \item for homogeneous or heterogeneous variances/
+    covariance matrices of the groups, and
   \item in terms of differences or ratios.
   }
-If many endpoints are to be analyzed, the covariance
-matrices (containing the covariances between the
-endpoints) may be assumed to be equal or unequal for
-the different groups. Exact or approximate multivariate
-t-distributions, respectively, are used for quantiles
-or p-values.
+Exact or approximate multivariatet-distributions,
+respectively, are used for quantiles or p-values.
 
 For example, the well-known conventional all-pair
 comparison of Tukey (1953) can be performed by
 specifying only a single endpoint and homogeneous (co-)
-variances. On the other hand, it's also possible to the
-same, but for many endpoints simultaneously, with
+variances. On the other hand, it's also possible to do
+the same, but for many endpoints simultaneously, with
 heterogeneous covariance matrices and in terms of
 ratios.
 
@@ -44,8 +40,8 @@ for multiple endpoints is described by Hasler (2009).
 \tabular{ll}{
 Package: \tab SimComp\cr
 Type: \tab Package\cr
-Version: \tab 1.4.2\cr
-Date: \tab 2009-10-22\cr
+Version: \tab 1.4.3\cr
+Date: \tab 2009-11-05\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }
@@ -70,8 +66,24 @@ tests in the presence of heteroscedasticity.
 \keyword{ package }
 \seealso{ \code{\link[mratios:mratios-package]{mratios}} }
 \examples{
-data(iris)
+# Example 1:
+# A Dunnett-test for the groups B and H against the standard S, on
+# the (single) endpoint Thromb.count, assuming unequal variances for
+# the groups. This is the well-known Dunnett-test but in the
+# presence of heteroscedasticity.
 
-comp <- SimTestRat(data=iris, grp="Species", alternative="greater", Margin=0.8)
-summary(comp)
+data(coagulation)
+
+comp1 <- SimTestDiff(data=coagulation, grp="Group", resp="Thromb.count", type="Dunnett", base=3, alternative="greater", covar.equal=FALSE)
+comp1
+
+# Example 2:
+# A Dunnett-test for the groups B and H against the standard S,
+# simultaneously on all endpoints, assuming unequal covariance
+# matrices for the groups.
+
+data(coagulation)
+
+comp2 <- SimTestDiff(data=coagulation, grp="Group", resp=c("Thromb.count","ADP","TRAP"), type="Dunnett", alternative="greater", covar.equal=FALSE)
+summary(comp2)
 }
