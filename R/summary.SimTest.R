@@ -1,4 +1,4 @@
-`summary.SimTest` <-
+summary.SimTest <-
 function(object,digits=4,...) {
 
 
@@ -16,10 +16,19 @@ if (object$test.class=="differences") {
 
 cat("", "\n")
 if (object$covar.equal==TRUE) {
+  cat("Estimated common covariance matrix of the data:", "\n")
+  print(round(object$CovMatDat, digits), digits=digits)
+} else {
+  cat("Estimated covariance matrices of the data:", "\n")
+  print(lapply(object$CovMatDat, FUN=round, digits=digits), digits=digits)
+}
+
+cat("", "\n")
+if (object$covar.equal==TRUE) {
   cat("Estimated common correlation matrix of the data:", "\n")
   print(round(object$CorrMatDat, digits), digits=digits)
 } else {
-  cat("Estimated correlation matrices of the data:", "\n", "\n")
+  cat("Estimated correlation matrices of the data:", "\n")
   print(lapply(object$CorrMatDat, FUN=round, digits=digits), digits=digits)
 }
 

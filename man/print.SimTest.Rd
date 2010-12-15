@@ -16,8 +16,8 @@ respectively.
 }
 \value{
 A print out containing the margins, estimates, test statistics, raw and
-adjusted p-values computed by \code{SimTestDiff} or \code{SimTestRat},
-respectively.
+adjusted \emph{p}-values computed by \code{SimTestDiff} or
+\code{SimTestRat}, respectively.
 }
 \author{ Mario Hasler }
 \seealso{ \code{\link{print.SimCi}} }

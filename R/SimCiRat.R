@@ -1,4 +1,4 @@
-`SimCiRat` <-
+SimCiRat <-
 function(data,grp,resp=NULL,type="Dunnett",base=1,Num.Contrast=NULL,Den.Contrast=NULL,
                       alternative="two.sided",covar.equal=FALSE,conf.level=0.95) {
 
@@ -39,7 +39,7 @@ for (i in 1:ntr) {
     stop("Response variables must be numeric")
   }
   if (any(is.na(trlist[[i]]))) {
-    stop("No equal sample sizes for the endpoints; missing values")
+    stop("Unequal sample sizes for the endpoints; missing values")
   }
 }
 
@@ -52,10 +52,10 @@ if (is.null(Num.Contrast)==FALSE || is.null(Num.Contrast)==FALSE) {
   }
   if (is.null(Den.Contrast)==FALSE && is.null(Num.Contrast)==FALSE) {
     if (nrow(Den.Contrast)!=nrow(Num.Contrast)) {
-      stop("Number of rows in Num.Contrast and Den.Contrast should be the same")
+      stop("Number of rows of Num.Contrast and Den.Contrast must be equal")
     }
     if (ncol(Den.Contrast)!=ntr || ncol(Num.Contrast)!=ntr) {
-      stop("Number of columns in Num.Contrast or Den.Contrast should be the same as number of groups")
+      stop("Number of columns of Num.Contrast and Den.Contrast and number of groups must be equal")
     }
     NC0 <- apply(X=Num.Contrast, MARGIN=1, function(x) {
       all(x==0)
@@ -117,7 +117,7 @@ rownames(out$lower) <- comp.names; colnames(out$lower) <- resp
 rownames(out$upper) <- comp.names; colnames(out$upper) <- resp
 if (covar.equal==FALSE) {
   rownames(out$degr.fr) <- comp.names; colnames(out$degr.fr) <- resp
-  names(out$CorrMatDat) <- tr.names
+  names(out$CovMatDat) <- names(out$CorrMatDat) <- tr.names
 }
 class(out) <- "SimCi"
 return(out)

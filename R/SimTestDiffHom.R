@@ -1,4 +1,4 @@
-`SimTestDiffHom` <-
+SimTestDiffHom <-
 function(trlist, grp, ntr, nep, ssvec, Cmat, alternative, Margin) {
 
 
@@ -49,7 +49,7 @@ for (z in 1:ncomp) { for (i in 1:nep) {
 }}
 
 list(estimate=estimate, statistic=test.stat, p.val.raw=p.val.raw, p.val.adj=p.val.adj,
-     CorrMatDat=CorrMatDat, CorrMatComp=R, degr.fr=defr,
+     CovMatDat=CovMatDat, CorrMatDat=CorrMatDat, CorrMatComp=R, degr.fr=defr,
      Cmat=Cmat, Margin=Margin, alternative=alternative)
 
 }

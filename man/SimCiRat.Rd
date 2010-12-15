@@ -70,14 +70,15 @@ all-pair comparison of Tukey (1953) and the many-to-one comparison of Dunnett (1
 for ratios of means are implemented, but allowing for multiple endpoints. Also, the
 user is free to create other interesting problem-specific contrasts. An approximate
 multivariate \emph{t}-distribution is used to calculate lower and upper limits (see
-Hasler, 2009). Simultaneous tests based on these intervals control the familywise
-error rate in the strong sense. The covariance matrices of the treatment groups
-(containing the covariances between the endpoints) can be assumed to be equal
-(\code{covar.equal=TRUE}) or unequal (\code{covar.equal=FALSE}). If being equal, the
-pooled covariance matrix is used, otherwise the Satterthwaite approximation to the
-degrees of freedom is used according to Hasler and Hothorn (2008). Unequal
-covariance matrices occure if either variances or correlations of some endpoints
-differ depending on the treatment groups.
+Hasler and Hothorn, 2011). Simultaneous tests based on these intervals control
+the familywise error rate in an admissible range and in the strong sense. The
+covariance matrices of the treatment groups (containing the covariances between the
+endpoints) can be assumed to be equal (\code{covar.equal=TRUE}) or unequal
+(\code{covar.equal=FALSE}). If being equal, the pooled covariance matrix is used,
+otherwise the Satterthwaite approximation to the degrees of freedom is used
+according to Hasler and Hothorn (2008). Unequal covariance matrices occure if
+variances or correlations of some endpoints differ depending on the treatment
+groups.
 }
 \value{
 An object of class SimCi containing:
@@ -104,7 +105,7 @@ must not be greater than the minimal sample size minus 1. Otherwise the procedur
 stops.
 
 All the intervals have the same direction for all comparisons and endpoints
-(\code{alternative="..."}). In case of doubts, use \code{"two.sided"}.
+(\code{alternative="..."}). In case of doubt, use \code{"two.sided"}.
 
 In contrast to simultaneous confidence intervals for differences, the correlation
 matrix for the multivariate \emph{t}-distribution depends on the unknown ratios. The
@@ -113,14 +114,11 @@ the different groups are assumed to be unequal (\code{covar.equal=FALSE}). Both
 problems can be handled by a plug-in approach, see the references therefore.
 }
 \references{
-Hasler, M. (2009): Extensions of Multiple Contrast Tests. \emph{PhD Thesis},
-Gottfried-Wilhelm-Leibniz-Universitaet Hannover.
+Hasler, M. and Hothorn, L.A. (2011): A Dunnett-type procedure for multiple endpoints.
+\emph{The International Journal of Biostatistics}.
 
-Hasler, M. and Hothorn, L.A. (submitted): A Dunnett-type
-Procedure for Multiple Endpoints
-
-Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence
-of heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.
+Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence of
+heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.
 
 Dilba, G., Bretz, F., and Guiard, V. (2006): Simultaneous confidence sets and
 confidence intervals for multiple ratios. \emph{Journal of Statistical Planning and
@@ -128,7 +126,7 @@ Inference} 136, 2640-2658.
 }
 \author{ Mario Hasler }
 \seealso{ \code{\link{SimCiDiff}}, \code{\link{SimTestRat}},
-          \code{\link{SimTestDiff}},  }
+          \code{\link{SimTestDiff}} }
 \examples{
 # Example 1:
 # Simultaneous confidence intervals for ratios of means, related to a
@@ -139,7 +137,8 @@ Inference} 136, 2640-2658.
 
 data(coagulation)
 
-interv1 <- SimCiRat(data=coagulation, grp="Group", resp="Thromb.count", type="Dunnett", base=3, alternative="greater", covar.equal=FALSE)
+interv1 <- SimCiRat(data=coagulation, grp="Group", resp="Thromb.count", type="Dunnett",
+  base=3, alternative="greater", covar.equal=FALSE)
 interv1
 
 # Example 2:
@@ -149,7 +148,8 @@ interv1
 
 data(coagulation)
 
-interv2 <- SimCiRat(data=coagulation, grp="Group", resp=c("Thromb.count","ADP","TRAP"), type="Dunnett", base=3, alternative="greater", covar.equal=FALSE)
+interv2 <- SimCiRat(data=coagulation, grp="Group", resp=c("Thromb.count","ADP","TRAP"), type="Dunnett",
+  base=3, alternative="greater", covar.equal=FALSE)
 summary(interv2)
 }
 \keyword{ htest }

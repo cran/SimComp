@@ -1,4 +1,4 @@
-`SimTestRatHet` <-
+SimTestRatHet <-
 function(trlist, grp, ntr, nep, ssvec, Num.Contrast, Den.Contrast, alternative, Margin) {
 
 
@@ -9,6 +9,10 @@ ncomp <- nrow(CMat)                                                      # numbe
 meanmat <- varmat <- matrix(nrow=ntr, ncol=nep)
 for (i in 1:ntr) { for (j in 1:nep) {
   meanmat[i,j]=mean(trlist[[i]][,j]); varmat[i,j]=var(trlist[[i]][,j]) }}
+if (any(meanmat<0)) {
+  cat("Warning: At least one sample mean is negative; check whether the test direction", "\n",
+      "is still correct", "\n")
+}
 estimate <- CMat%*%meanmat/(DMat%*%meanmat)
 
 defrmat <- matrix(nrow=ncomp, ncol=nep)
@@ -56,7 +60,7 @@ for (z in 1:ncomp) { for (i in 1:nep) {
 }}
 
 list(estimate=estimate, statistic=test.stat, p.val.raw=p.val.raw, p.val.adj=p.val.adj,
-     CorrMatDat=CorrMatDat, CorrMatComp=R, degr.fr=defrmat,
+     CovMatDat=CovMatDat, CorrMatDat=CorrMatDat, CorrMatComp=R, degr.fr=defrmat,
      Num.Contrast=CMat, Den.Contrast=DMat, Margin=Margin, alternative=alternative)
 
 }

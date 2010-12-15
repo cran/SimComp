@@ -1,5 +1,6 @@
 export(SimTestDiff, SimTestRat,
-       SimCiDiff, SimCiRat)
+       SimCiDiff, SimCiRat,
+       ermvnorm)
 
 import(mvtnorm, multcomp, mratios)
 

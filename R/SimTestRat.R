@@ -1,4 +1,4 @@
-`SimTestRat` <-
+SimTestRat <-
 function(data,grp,resp=NULL,type="Dunnett",base=1,Num.Contrast=NULL,Den.Contrast=NULL,
                        alternative="two.sided",Margin=NULL,covar.equal=FALSE) {
 
@@ -39,7 +39,7 @@ for (i in 1:ntr) {
     stop("Response variables must be numeric")
   }
   if (any(is.na(trlist[[i]]))) {
-    stop("No equal sample sizes for the endpoints; missing values")
+    stop("Unequal sample sizes for the endpoints; missing values")
   }
 }
 
@@ -52,10 +52,10 @@ if (is.null(Num.Contrast)==FALSE || is.null(Num.Contrast)==FALSE) {
   }
   if (is.null(Den.Contrast)==FALSE && is.null(Num.Contrast)==FALSE) {
     if (nrow(Den.Contrast)!=nrow(Num.Contrast)) {
-      stop("Number of rows in Num.Contrast and Den.Contrast should be the same")
+      stop("Number of rows of Num.Contrast and Den.Contrast must be equal")
     }
     if (ncol(Den.Contrast)!=ntr || ncol(Num.Contrast)!=ntr) {
-      stop("Number of columns in Num.Contrast or Den.Contrast should be the same as number of groups")
+      stop("Number of columns of Num.Contrast and Den.Contrast and number of groups must be equal")
     }
     NC0 <- apply(X=Num.Contrast, MARGIN=1, function(x) {
       all(x==0)
@@ -100,7 +100,7 @@ if (is.numeric(Margin)) {
   }
   if (is.vector(Margin)) {
     if (length(Margin)!=nep) {
-      stop("Margin must be a single numeric value, or numeric vector with length equal to the number of endpoints,", "\n",
+      stop("Margin must be a single numeric value, or a numeric vector with length equal to the number of endpoints,", "\n",
            "or a matrix with rows equal to the number of contrasts and columns equal to the number of endpoints")
     } else {
       Margin <- matrix(rep(Margin,nrow(Num.Cmat)),ncol=nep,byrow=TRUE)
@@ -108,10 +108,10 @@ if (is.numeric(Margin)) {
   }
   if (is.matrix(Margin)) {
     if (nrow(Margin)!=nrow(Num.Cmat)) {
-      stop("Number of rows of Margin must be equal to the number of contrasts")
+      stop("Number of rows of Margin and number of contrasts must be equal")
     }
     if (ncol(Margin)!=nep) {
-      stop("Number of columns of Margin must be equal to the number of endpoints")
+      stop("Number of columns of Margin and number of endpoints must be equal")
     }
   }
 }
@@ -140,7 +140,7 @@ rownames(out$p.val.adj) <- comp.names; colnames(out$p.val.adj) <- resp
 rownames(out$Margin) <- comp.names; colnames(out$Margin) <- resp
 if (covar.equal==FALSE) {
   rownames(out$degr.fr) <- comp.names; colnames(out$degr.fr) <- resp
-  names(out$CorrMatDat) <- tr.names
+  names(out$CovMatDat) <- names(out$CorrMatDat) <- tr.names
 }
 class(out) <- "SimTest"
 return(out)

@@ -71,21 +71,22 @@ multiple endpoints. For example, the all-pair comparison of Tukey (1953) and the
 many-to-one comparison of Dunnett (1955) for ratios of means are implemented, but
 allowing for multiple endpoints. Also, the user is free to create other interesting
 problem-specific contrasts. An approximate multivariate \emph{t}-distribution is
-used to calculate (adjusted) \emph{p}-values (see Hasler, 2009). This approach
-controls the familywise error rate in the strong sense. The covariance matrices of
-the treatment groups (containing the covariances between the endpoints) can be
-assumed to be equal (\code{covar.equal=TRUE}) or unequal (\code{covar.equal=FALSE}).
-If being equal, the pooled covariance matrix is used, otherwise the Satterthwaite
-approximation to the degrees of freedom is used according to Hasler and Hothorn
-(2008). Unequal covariance matrices occure if either variances or correlations of
-some endpoints differ depending on the treatment groups.
+used to calculate (adjusted) \emph{p}-values (see Hasler and Hothorn, 2011). This
+approach controls the familywise error rate in an admissible range and in the
+strong sense. The covariance matrices of the treatment groups (containing the
+covariances between the endpoints) can be assumed to be equal
+(\code{covar.equal=TRUE}) or unequal (\code{covar.equal=FALSE}). If being equal,
+the pooled covariance matrix is used, otherwise the Satterthwaite approximation to
+the degrees of freedom is used according to Hasler and Hothorn (2008). Unequal
+covariance matrices occure if variances or correlations of some endpoints differ
+depending on the treatment groups.
 }
 \value{
 An object of class SimTest containing:
 \item{estimate}{ a matrix of estimated ratios }
 \item{statistic}{ a matrix of the calculated test statistics }
-\item{p.val.raw}{ a matrix of raw p-values }
-\item{p.val.adj}{ a matrix of p-values adjusted for multiplicity }
+\item{p.val.raw}{ a matrix of raw \emph{p}-values }
+\item{p.val.adj}{ a matrix of \emph{p}-values adjusted for multiplicity }
 \item{CorrMatDat}{ either the estimated common correlation matrix of the data
                    (\code{covar.equal=TRUE}) or the list of the different (one for
                    each treatment) estimated correlation matrices of the data
@@ -104,21 +105,18 @@ must not be greater than the minimal sample size minus 1. Otherwise the procedur
 stops.
 
 All hypotheses are tested with the same test direction for all comparisons and
-endpoints (\code{alternative="..."}). In case of doubts, use \code{"two.sided"}.
+endpoints (\code{alternative="..."}). In case of doubt, use \code{"two.sided"}.
 
 If \code{Margin} is a single numeric value or a numeric vector, then the same
 value(s) are used for the remaining comparisons or endpoints. If \code{Margin} is
 not specified, the default is 1.
 }
 \references{
-Hasler, M. (2009): Extensions of Multiple Contrast Tests. \emph{PhD Thesis},
-Gottfried-Wilhelm-Leibniz-Universitaet Hannover.
+Hasler, M. and Hothorn, L.A. (2011): A Dunnett-type procedure for multiple endpoints.
+\emph{The International Journal of Biostatistics}.
 
-Hasler, M. and Hothorn, L.A. (submitted): A Dunnett-type
-Procedure for Multiple Endpoints
-
-Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence
-of heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.
+Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence of
+heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.
 
 Dilba, G., Bretz, F., and Guiard, V. (2006): Simultaneous confidence sets and
 confidence intervals for multiple ratios. \emph{Journal of Statistical Planning and
@@ -136,7 +134,8 @@ Inference} 136, 2640-2658.
 
 data(coagulation)
 
-comp1 <- SimTestRat(data=coagulation, grp="Group", resp="Thromb.count", type="Dunnett", base=3, alternative="greater", covar.equal=FALSE)
+comp1 <- SimTestRat(data=coagulation, grp="Group", resp="Thromb.count", type="Dunnett",
+  base=3, alternative="greater", covar.equal=FALSE)
 comp1
 
 # Example 2:
@@ -146,7 +145,8 @@ comp1
 
 data(coagulation)
 
-comp2 <- SimTestRat(data=coagulation, grp="Group", resp=c("Thromb.count","ADP","TRAP"), type="Dunnett", alternative="greater", covar.equal=FALSE)
+comp2 <- SimTestRat(data=coagulation, grp="Group", resp=c("Thromb.count","ADP","TRAP"), type="Dunnett",
+  base=3, alternative="greater", covar.equal=FALSE)
 summary(comp2)
 }
 \keyword{ htest }

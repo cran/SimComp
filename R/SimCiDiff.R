@@ -1,4 +1,4 @@
-`SimCiDiff` <-
+SimCiDiff <-
 function(data,grp,resp=NULL,type="Dunnett",base=1,ContrastMat=NULL,
                        alternative="two.sided",covar.equal=FALSE,conf.level=0.95) {
 
@@ -39,13 +39,13 @@ for (i in 1:ntr) {
     stop("Response variables must be numeric")
   }
   if (any(is.na(trlist[[i]]))) {
-    stop("No equal sample sizes for the endpoints; missing values")
+    stop("Unequal sample sizes for the endpoints; missing values")
   }
 }
 
 if (!is.null(ContrastMat)) {
   if (ncol(ContrastMat)!=ntr) {
-    stop("Number of columns in ContrastMat should be the same as number of groups")
+    stop("Number of columns of ContrastMat and number of groups must be equal")
   }
   C0 <- apply(X=ContrastMat, MARGIN=1, function(x) {
     all(x==0)
@@ -92,7 +92,7 @@ rownames(out$lower) <- comp.names; colnames(out$lower) <- resp
 rownames(out$upper) <- comp.names; colnames(out$upper) <- resp
 if (covar.equal==FALSE) {
   rownames(out$degr.fr) <- comp.names; colnames(out$degr.fr) <- resp
-  names(out$CorrMatDat) <- tr.names
+  names(out$CovMatDat) <- names(out$CorrMatDat) <- tr.names
 }
 class(out) <- "SimCi"
 return(out)

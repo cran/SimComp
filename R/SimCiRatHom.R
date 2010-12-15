@@ -1,4 +1,4 @@
-`SimCiRatHom` <-
+SimCiRatHom <-
 function(trlist, grp, ntr, nep, ssvec, Num.Contrast, Den.Contrast, alternative, conf.level) {
 
 
@@ -8,7 +8,11 @@ ncomp <- nrow(CMat)                                                      # numbe
 
 meanmat <- matrix(nrow=ntr, ncol=nep)
 for (i in 1:ntr) { for (j in 1:nep) {
-meanmat[i,j]=mean(trlist[[i]][,j]) }}
+  meanmat[i,j]=mean(trlist[[i]][,j]) }}
+if (any(meanmat<0)) {
+  cat("Warning: At least one sample mean is negative; check whether the test direction", "\n",
+      "is still correct", "\n")
+}
 estimate <- CMat%*%meanmat/(DMat%*%meanmat)
 
 defr <- sum(ssvec)-ntr                                                   # degrees of freedom
@@ -125,7 +129,7 @@ if (alternative=="two.sided") {
 }
 
 list(estimate=estimate, NSD=NSD, lower.raw=lower.raw, upper.raw=upper.raw, lower=lower, upper=upper,
-     CorrMatDat=CorrMatDat, CorrMatComp=R, degr.fr=defr, 
+     CovMatDat=CovMatDat, CorrMatDat=CorrMatDat, CorrMatComp=R, degr.fr=defr, 
      Num.Contrast=CMat, Den.Contrast=DMat, alternative=alternative, conf.level=conf.level)
 
 }

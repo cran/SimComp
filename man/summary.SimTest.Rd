@@ -16,7 +16,7 @@ respectively.
 }
 \value{
 A print out containing the estimates, test statistics, raw and
-adjusted p-values, estimated correlation matrices of the data and of the
+adjusted \emph{p}-values, estimated correlation matrices of the data and of the
 comparisons computed by \code{SimTestDiff} or \code{SimTestRat}, respectively.
 }
 \author{ Mario Hasler }

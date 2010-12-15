@@ -26,9 +26,13 @@ et. al, 2000.
   }
 }
 \source{
-Kropf S, Hommel G, Schmidt U, Brickwedel J, and Jepsen MS. Multiple comparisons of
-treatments with stable multivariate tests in a two-stage adaptive design, including a test
-for non-inferiority. Biometrical Journal 2000; 42(8):951-965
+Kropf, S. et al. (2000): Multiple comparisons of treatments with stable multivariate tests
+in a two-stage adaptive design, including a test for non-inferiority. \emph{Biometrical
+Journal} 42, 951-965.
+}
+\references{
+Hasler, M. and Hothorn, L.A. (2011): A Dunnett-type procedure for multiple endpoints.
+\emph{The International Journal of Biostatistics}.
 }
 \examples{
 data(coagulation)

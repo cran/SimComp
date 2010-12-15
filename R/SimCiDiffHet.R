@@ -1,4 +1,4 @@
-`SimCiDiffHet` <-
+SimCiDiffHet <-
 function(trlist, grp, ntr, nep, ssvec, Cmat, alternative, conf.level) {
 
 
@@ -68,7 +68,7 @@ if (alternative=="two.sided") {
 }
 
 list(estimate=estimate, lower.raw=lower.raw, upper.raw=upper.raw, lower=lower, upper=upper,
-     CorrMatDat=CorrMatDat, CorrMatComp=R, degr.fr=defrmat, 
+     CovMatDat=CovMatDat, CorrMatDat=CorrMatDat, CorrMatComp=R, degr.fr=defrmat, 
      Cmat=Cmat, alternative=alternative, conf.level=conf.level)
 
 }

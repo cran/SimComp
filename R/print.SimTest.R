@@ -1,4 +1,4 @@
-`print.SimTest` <-
+print.SimTest <-
 function(x,digits=4,...) {
 
 
