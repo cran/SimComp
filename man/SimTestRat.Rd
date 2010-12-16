@@ -4,11 +4,11 @@
 \description{
 Simultaneous tests for ratios of contrasts (linear functions) of normal means (e.g.,
 "Dunnett", "Tukey", "Williams" ect.) when there is more than one primary response
-variable (endpoint). The procedure of Hasler (2009) is applied for ratios of means
-of normally distributed data. The covariance matrices (containing the covariances
-between the endpoints) may be assumed to be equal or possibly unequal for the
-different groups. For the case of only a single endpoint, the procedure reduces to
-the PI procedure of Hasler and Hothorn (2008).
+variable (endpoint). The procedure of Hasler and Hothorn (2011) is applied for
+ratios of means of normally distributed data. The covariance matrices (containing
+the covariances between the endpoints) may be assumed to be equal or possibly
+unequal for the different groups. For the case of only a single endpoint, the
+procedure coincides with the PI procedure of Hasler and Hothorn (2008).
 }
 \usage{
 SimTestRat(data, grp, resp = NULL, type = "Dunnett", base = 1, Num.Contrast = NULL,
@@ -118,9 +118,8 @@ Hasler, M. and Hothorn, L.A. (2011): A Dunnett-type procedure for multiple endpo
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence of
 heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.
 
-Dilba, G., Bretz, F., and Guiard, V. (2006): Simultaneous confidence sets and
-confidence intervals for multiple ratios. \emph{Journal of Statistical Planning and
-Inference} 136, 2640-2658.
+Dilba, G. et al. (2006): Simultaneous confidence sets and confidence intervals for
+multiple ratios. \emph{Journal of Statistical Planning and Inference} 136, 2640-2658.
 }
 \author{ Mario Hasler }
 \seealso{ \code{\link{SimTestDiff}}, \code{\link{SimCiRat}},

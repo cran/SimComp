@@ -17,7 +17,7 @@ several groups or dose levels can be compared
   \item for homogeneous or heterogeneous variances/ covariance
     matrices of the groups, and
   \item in terms of differences or ratios.
-  }
+}
 Exact or approximate multivariate \emph{t}-distributions,
 respectively, are used for quantiles or \emph{p}-values.
 
@@ -35,10 +35,26 @@ endpoints is described by Hasler and Hothorn (2011).
 \tabular{ll}{
 Package: \tab SimComp\cr
 Type: \tab Package\cr
-Version: \tab 1.4.4\cr
-Date: \tab 2010-12-15\cr
+Version: \tab 1.4.5\cr
+Date: \tab 2010-12-16\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr
+}
+
+Index:
+\itemize{
+  \item \code{SimCiDiff}: Simultaneous Confidence Intervals for
+    Differences of Means of Multiple Endpoints
+  \item \code{SimCiRat}: Simultaneous Confidence Intervals for
+    Ratios of Means of Multiple Endpoints
+  \item \code{SimTestDiff}: Simultaneous Tests for Differences of
+    Means of Multiple Endpoints
+  \item \code{SimTestRat}: Simultaneous Tests for Ratios of Means
+    of Multiple Endpoints
+  \item \code{coagulation}: Data from a clinical study of three
+    sets of extracorporeal circulation in heart-lung machines
+  \item \code{ermvnorm}: Multivariate Normal Random Numbers with
+    Exact Parameters
 }
 }
 \author{
@@ -52,6 +68,9 @@ Hasler, M. and Hothorn, L.A. (2011): A Dunnett-type procedure for multiple endpo
 
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence of
 heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.
+
+Dilba, G. et al. (2006): Simultaneous confidence sets and confidence intervals for
+multiple ratios. \emph{Journal of Statistical Planning and Inference} 136, 2640-2658.
 }
 \keyword{ package }
 \seealso{ \code{\link[mratios:mratios-package]{mratios}} }

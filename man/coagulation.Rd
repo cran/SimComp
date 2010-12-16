@@ -2,7 +2,7 @@
 \alias{coagulation}
 \docType{data}
 \title{
-Data from a clinical study for the comparison of three sets of extracorporeal circulation
+Data from a clinical study of three sets of extracorporeal circulation
 in heart-lung machines
 }
 \description{
