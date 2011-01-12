@@ -32,7 +32,7 @@ Journal} 42, 951-965.
 }
 \references{
 Hasler, M. and Hothorn, L.A. (2011): A Dunnett-type procedure for multiple endpoints.
-\emph{The International Journal of Biostatistics}.
+\emph{The International Journal of Biostatistics} 7, Article 3.
 }
 \examples{
 data(coagulation)

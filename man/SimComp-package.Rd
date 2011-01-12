@@ -35,8 +35,8 @@ endpoints is described by Hasler and Hothorn (2011).
 \tabular{ll}{
 Package: \tab SimComp\cr
 Type: \tab Package\cr
-Version: \tab 1.4.5\cr
-Date: \tab 2010-12-16\cr
+Version: \tab 1.5.0\cr
+Date: \tab 2011-01-12\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }
@@ -64,7 +64,7 @@ Maintainer: Mario Hasler <hasler@email.uni-kiel.de>
 }
 \references{
 Hasler, M. and Hothorn, L.A. (2011): A Dunnett-type procedure for multiple endpoints.
-\emph{The International Journal of Biostatistics}.
+\emph{The International Journal of Biostatistics} 7, Article 3.
 
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence of
 heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.

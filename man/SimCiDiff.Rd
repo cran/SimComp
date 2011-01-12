@@ -101,7 +101,7 @@ All the intervals have the same direction for all comparisons and endpoints
 }
 \references{
 Hasler, M. and Hothorn, L.A. (2011): A Dunnett-type procedure for multiple endpoints.
-\emph{The International Journal of Biostatistics}.
+\emph{The International Journal of Biostatistics} 7, Article 3.
 
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence of
 heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.

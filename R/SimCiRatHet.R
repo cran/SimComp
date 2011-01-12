@@ -49,7 +49,7 @@ NSD <- 0
 
 if (alternative=="greater") {
   for (z in 1:ncomp) { for (i in 1:nep) {
-    lo1malqu <- qmvt(conf.level,interval=c(-15,15),tail="lower.tail",df=defrmat[z,i],corr=R)$quantile
+    lo1malqu <- qmvt(conf.level,tail="lower.tail",df=defrmat[z,i],corr=R)$quantile
     univarqu <- qt(p=conf.level, df=defrmat[z,i])
     Azi[z,i] <- ( t(DMat[z,])%*%meanmat[,i] )^2 - lo1malqu^2 * ( t(DMat[z,])%*%diag(varmat[,i])%*%M%*%DMat[z,] )
     Bzi[z,i] <- -2 * ( (t(CMat[z,])%*%meanmat[,i]) * (t(DMat[z,])%*%meanmat[,i])
@@ -77,7 +77,7 @@ if (alternative=="greater") {
 }
 if (alternative=="less") {
   for (z in 1:ncomp) { for (i in 1:nep) {
-    up1malqu <- qmvt(conf.level,interval=c(-15,15),tail="upper.tail",df=defrmat[z,i],corr=R)$quantile
+    up1malqu <- qmvt(conf.level,tail="upper.tail",df=defrmat[z,i],corr=R)$quantile
     univarqu <- qt(p=1-conf.level, df=defrmat[z,i])
     Azi[z,i] <- ( t(DMat[z,])%*%meanmat[,i] )^2 - up1malqu^2 * ( t(DMat[z,])%*%diag(varmat[,i])%*%M%*%DMat[z,] )
     Bzi[z,i] <- -2 * ( (t(CMat[z,])%*%meanmat[,i]) * (t(DMat[z,])%*%meanmat[,i])
@@ -105,7 +105,7 @@ if (alternative=="less") {
 }
 if (alternative=="two.sided") {
   for (z in 1:ncomp) { for (i in 1:nep) {
-    ts1malqu <- qmvt(conf.level,interval=c(-15,15),tail="both.tails",df=defrmat[z,i],corr=R)$quantile
+    ts1malqu <- qmvt(conf.level,tail="both.tails",df=defrmat[z,i],corr=R)$quantile
     univarqu <- qt(p=1-(1-conf.level)/2, df=defrmat[z,i])
     Azi[z,i] <- ( t(DMat[z,])%*%meanmat[,i] )^2 - ts1malqu^2 * ( t(DMat[z,])%*%diag(varmat[,i])%*%M%*%DMat[z,] )
     Bzi[z,i] <- -2 * ( (t(CMat[z,])%*%meanmat[,i]) * (t(DMat[z,])%*%meanmat[,i])

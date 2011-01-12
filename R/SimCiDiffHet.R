@@ -40,7 +40,7 @@ lower <- upper <- lower.raw <- upper.raw <- matrix(nrow=ncomp,ncol=nep)
 
 if (alternative=="greater") {
   for (z in 1:ncomp) { for (i in 1:nep) {
-    lo1malqu <- qmvt(conf.level,interval=c(-15,15),tail="lower.tail",df=defrmat[z,i],corr=R)$quantile
+    lo1malqu <- qmvt(conf.level,tail="lower.tail",df=defrmat[z,i],corr=R)$quantile
     univarqu <- qt(p=conf.level, df=defrmat[z,i])
     upper[z,i] <- upper.raw[z,i] <- Inf
     lower[z,i]     <- t(Cmat[z,])%*%meanmat[,i] - lo1malqu * sqrt( t(Cmat[z,])%*%diag(varmat[,i])%*%M%*%Cmat[z,] )
@@ -49,7 +49,7 @@ if (alternative=="greater") {
 }
 if (alternative=="less") {
   for (z in 1:ncomp) { for (i in 1:nep) {
-    up1malqu <- qmvt(conf.level,interval=c(-15,15),tail="upper.tail",df=defrmat[z,i],corr=R)$quantile
+    up1malqu <- qmvt(conf.level,tail="upper.tail",df=defrmat[z,i],corr=R)$quantile
     univarqu <- qt(p=1-conf.level, df=defrmat[z,i])
     upper[z,i]     <- t(Cmat[z,])%*%meanmat[,i] - up1malqu * sqrt( t(Cmat[z,])%*%diag(varmat[,i])%*%M%*%Cmat[z,] )
     upper.raw[z,i] <- t(Cmat[z,])%*%meanmat[,i] - univarqu * sqrt( t(Cmat[z,])%*%diag(varmat[,i])%*%M%*%Cmat[z,] )
@@ -58,7 +58,7 @@ if (alternative=="less") {
 }
 if (alternative=="two.sided") {
   for (z in 1:ncomp) { for (i in 1:nep) {
-    ts1malqu <- qmvt(conf.level,interval=c(-15,15),tail="both.tails",df=defrmat[z,i],corr=R)$quantile
+    ts1malqu <- qmvt(conf.level,tail="both.tails",df=defrmat[z,i],corr=R)$quantile
     univarqu <- qt(p=1-(1-conf.level)/2, df=defrmat[z,i])
     upper[z,i]     <- t(Cmat[z,])%*%meanmat[,i] + ts1malqu * sqrt( t(Cmat[z,])%*%diag(varmat[,i])%*%M%*%Cmat[z,] )
     upper.raw[z,i] <- t(Cmat[z,])%*%meanmat[,i] + univarqu * sqrt( t(Cmat[z,])%*%diag(varmat[,i])%*%M%*%Cmat[z,] )

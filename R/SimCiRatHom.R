@@ -44,7 +44,7 @@ Azi.raw <- Bzi.raw <- Czi.raw <- Discrimi.raw <- lower.raw <- upper.raw <- matri
 NSD <- 0
 
 if (alternative=="greater") {
-  lo1malqu <- qmvt(conf.level,interval=c(-15,15),tail="lower.tail",df=defr,corr=R)$quantile
+  lo1malqu <- qmvt(conf.level,tail="lower.tail",df=defr,corr=R)$quantile
   univarqu <- qt(p=conf.level, df=defr)
   for (z in 1:ncomp) { for (i in 1:nep) {
     Azi[z,i] <- ( t(DMat[z,])%*%meanmat[,i] )^2 - lo1malqu^2 * diag(CovMatDat)[i] * ( t(DMat[z,])%*%M%*%DMat[z,] )
@@ -72,7 +72,7 @@ if (alternative=="greater") {
   }}
 }
 if (alternative=="less") {
-  up1malqu <- qmvt(conf.level,interval=c(-15,15),tail="upper.tail",df=defr,corr=R)$quantile
+  up1malqu <- qmvt(conf.level,tail="upper.tail",df=defr,corr=R)$quantile
   univarqu <- qt(p=1-conf.level, df=defr)
   for (z in 1:ncomp) { for (i in 1:nep) {
     Azi[z,i] <- ( t(DMat[z,])%*%meanmat[,i] )^2 - up1malqu^2 * diag(CovMatDat)[i] * ( t(DMat[z,])%*%M%*%DMat[z,] )
@@ -100,7 +100,7 @@ if (alternative=="less") {
   }}
 }
 if (alternative=="two.sided") {
-  ts1malqu <- qmvt(conf.level,interval=c(-15,15),tail="both.tails",df=defr,corr=R)$quantile
+  ts1malqu <- qmvt(conf.level,tail="both.tails",df=defr,corr=R)$quantile
   univarqu <- qt(p=1-(1-conf.level)/2, df=defr)
   for (z in 1:ncomp) { for (i in 1:nep) {
     Azi[z,i] <- ( t(DMat[z,])%*%meanmat[,i] )^2 - ts1malqu^2 * diag(CovMatDat)[i] * ( t(DMat[z,])%*%M%*%DMat[z,] )
