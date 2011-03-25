@@ -114,7 +114,7 @@ rownames(out$p.val.raw) <- comp.names; colnames(out$p.val.raw) <- resp
 rownames(out$p.val.adj) <- comp.names; colnames(out$p.val.adj) <- resp
 rownames(out$Margin) <- comp.names; colnames(out$Margin) <- resp
 if (covar.equal==FALSE) {
-  rownames(out$degr.fr) <- comp.names; colnames(out$degr.fr) <- resp
+  names(out$degr.fr) <- comp.names
   names(out$CovMatDat) <- names(out$CorrMatDat) <- tr.names
 }
 class(out) <- "SimTest"

@@ -45,7 +45,7 @@ cat("Alternative hypotheses: True", object$test.class)
 
 comparison <- rep(object$comp.names, each=length(object$resp))
 endpoint <- rep(object$resp, times=length(object$comp.names))
-margin <- estimate <- statistic <- p.value.raw <- p.value.adj  <- NULL
+margin <- estimate <- statistic <- p.value.raw <- p.value.adj <- NULL
 for (i in 1:length(object$comp.names)) {
   margin <- c(margin, round(object$Margin[i,],digits))
   estimate <- c(estimate, round(object$estimate[i,],digits))

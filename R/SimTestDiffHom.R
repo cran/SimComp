@@ -30,7 +30,7 @@ for (z in 1:ncomp) {
   }
   R <- rbind(R, Rrow)                                                    # correlation matrix for test.stat
 }
-diag(R)=rep(1,times=nrow(R))
+diag(R) <- 1
 
 test.stat <- p.val.adj <- p.val.raw <- matrix(nrow=ncomp, ncol=nep)      # matrices of test statistics and p.vals
 for (z in 1:ncomp) { for (i in 1:nep) {

@@ -35,8 +35,8 @@ endpoints is described by Hasler and Hothorn (2011).
 \tabular{ll}{
 Package: \tab SimComp\cr
 Type: \tab Package\cr
-Version: \tab 1.5.0\cr
-Date: \tab 2011-01-12\cr
+Version: \tab 1.6.0\cr
+Date: \tab 2011-03-25\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }

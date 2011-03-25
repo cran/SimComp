@@ -38,7 +38,7 @@ print(round(object$CorrMatComp,digits), digits=digits)
 
 comparison <- rep(object$comp.names, each=length(object$resp))
 endpoint <- rep(object$resp, times=length(object$comp.names))
-estimate <- lower.raw <- upper.raw <- lower <- upper  <- NULL
+estimate <- lower.raw <- upper.raw <- lower <- upper <- NULL
 for (i in 1:length(object$comp.names)) {
   estimate <- c(estimate, round(object$estimate[i,],digits))
   lower.raw <- c(lower.raw, round(object$lower.raw[i,],digits))

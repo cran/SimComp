@@ -91,7 +91,7 @@ if (type=="User defined") {
 rownames(out$lower) <- comp.names; colnames(out$lower) <- resp
 rownames(out$upper) <- comp.names; colnames(out$upper) <- resp
 if (covar.equal==FALSE) {
-  rownames(out$degr.fr) <- comp.names; colnames(out$degr.fr) <- resp
+  names(out$degr.fr) <- comp.names
   names(out$CovMatDat) <- names(out$CorrMatDat) <- tr.names
 }
 class(out) <- "SimCi"

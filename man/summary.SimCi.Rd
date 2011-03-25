@@ -16,8 +16,9 @@ respectively.
 }
 \value{
 A print out containing the estimates, raw and simultaneous confidence
-intervals, estimated correlation matrices of the data and of the
-comparisons computed by \code{SimCiDiff} or \code{SimCiRat}, respectively.
+intervals, estimated covariance and correlation matrices of the data and
+of the comparisons computed by \code{SimCiDiff} or \code{SimCiRat},
+respectively.
 }
 \author{ Mario Hasler }
 \seealso{ \code{\link{summary.SimTest}} }

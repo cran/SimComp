@@ -16,8 +16,9 @@ respectively.
 }
 \value{
 A print out containing the estimates, test statistics, raw and
-adjusted \emph{p}-values, estimated correlation matrices of the data and of the
-comparisons computed by \code{SimTestDiff} or \code{SimTestRat}, respectively.
+adjusted \emph{p}-values, estimated covariance correlation matrices of the data
+and of the comparisons computed by \code{SimTestDiff} or \code{SimTestRat},
+respectively.
 }
 \author{ Mario Hasler }
 \seealso{ \code{\link{summary.SimCi}} }

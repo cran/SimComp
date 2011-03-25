@@ -8,8 +8,8 @@ one primary response variable (endpoint). The procedure of Hasler and Hothorn
 (2011) is applied for differences of means of normally distributed data. The
 covariance matrices (containing the covariances between the endpoints) may be
 assumed to be equal or possibly unequal for the different groups. For the case of
-only a single endpoint, the procedure coincides with the PI procedure of Hasler
-and Hothorn (2008).
+only a single endpoint and unequal covariance matrices (variances), the procedure
+coincides with the PI procedure of Hasler and Hothorn (2008).
 }
 \usage{
 SimCiDiff(data, grp, resp = NULL, type = "Dunnett", base = 1, ContrastMat = NULL,
@@ -67,8 +67,8 @@ Hothorn, 2011). Simultaneous tests based on these intervals control the familywi
 error rate in an admissible range and in the strong sense. The covariance matrices
 of the treatment groups (containing the covariances between the endpoints) can be
 assumed to be equal (\code{covar.equal=TRUE}) or unequal (\code{covar.equal=FALSE}).
-If being equal, the pooled covariance matrix is used, otherwise the Satterthwaite
-approximation to the degrees of freedom is used according to Hasler and Hothorn
+If being equal, the pooled covariance matrix is used, otherwise Satterthwaite
+approximations to the degrees of freedom are used according to Hasler and Hothorn
 (2008). Unequal covariance matrices occure if variances or correlations of some
 endpoints differ depending on the treatment groups.
 }
@@ -86,7 +86,8 @@ An object of class SimCi containing:
 \item{CorrMatComp}{ the estimated correlation matrix to be used for the multivariate
                     \emph{t}-distribution }
 \item{degr.fr}{ either a single degree of freedom (\code{covar.equal=TRUE}) or a
-                matrix of degrees of freedom (\code{covar.equal=FALSE}) }
+                vector of degrees of freedom (\code{covar.equal=FALSE}) related
+                to the comparisons }
 }
 \note{
 All measurement objects of each treatment group must have values for each endpoint.

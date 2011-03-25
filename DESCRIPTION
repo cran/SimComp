@@ -1,8 +1,8 @@
 Package: SimComp
 Type: Package
 Title: Simultaneous Comparisons for Multiple Endpoints
-Version: 1.5.0
-Date: 2011-01-12
+Version: 1.6.0
+Date: 2011-03-25
 Author: Mario Hasler
 Maintainer: Mario Hasler <hasler@email.uni-kiel.de>
 Depends: R (>= 2.10.0)
@@ -17,6 +17,6 @@ Description: Simultaneous tests and confidence intervals for one-way
         matrices.
 License: GPL
 LazyLoad: yes
-Packaged: 2011-01-12 11:38:03 UTC; Mario
+Packaged: 2011-03-25 14:24:41 UTC; Mario
 Repository: CRAN
-Date/Publication: 2011-01-12 14:36:58
+Date/Publication: 2011-03-26 15:43:55

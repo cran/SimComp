@@ -37,7 +37,7 @@ for (z in 1:ncomp) {
   }
   R <- rbind(R, Rrow)                                                    # correlation matrix for test.stat
 }
-diag(R)=rep(1,times=nrow(R))
+diag(R) <- 1
 
 Azi     <- Bzi     <- Czi     <- Discrimi     <- lower     <- upper     <- matrix(nrow=ncomp,ncol=nep)
 Azi.raw <- Bzi.raw <- Czi.raw <- Discrimi.raw <- lower.raw <- upper.raw <- matrix(nrow=ncomp,ncol=nep)

@@ -11,7 +11,7 @@ cat("Assumption: ")
 
 comparison <- rep(x$comp.names, each=length(x$resp))
 endpoint <- rep(x$resp, times=length(x$comp.names))
-estimate <- lower.raw <- upper.raw <- lower <- upper  <- NULL
+estimate <- lower.raw <- upper.raw <- lower <- upper <- NULL
 for (i in 1:length(x$comp.names)) {
   estimate <- c(estimate, round(x$estimate[i,],digits))
   lower.raw <- c(lower.raw, round(x$lower.raw[i,],digits))
