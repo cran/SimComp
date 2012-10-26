@@ -35,8 +35,8 @@ endpoints is described by Hasler and Hothorn (2011).
 \tabular{ll}{
 Package: \tab SimComp\cr
 Type: \tab Package\cr
-Version: \tab 1.6.0\cr
-Date: \tab 2011-03-25\cr
+Version: \tab 1.7.0\cr
+Date: \tab 2012-10-26\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }
@@ -66,6 +66,9 @@ Maintainer: Mario Hasler <hasler@email.uni-kiel.de>
 Hasler, M. and Hothorn, L.A. (2011): A Dunnett-type procedure for multiple endpoints.
 \emph{The International Journal of Biostatistics} 7, Article 3.
 
+Hasler, M. and Hothorn, L.A. (2012): A multivariate Williams-type trend procedure.
+\emph{Statistics in Biopharmaceutical Research} 4, 57-65.
+
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence of
 heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.
 
@@ -83,8 +86,8 @@ multiple ratios. \emph{Journal of Statistical Planning and Inference} 136, 2640-
 
 data(coagulation)
 
-comp1 <- SimTestDiff(data=coagulation, grp="Group", resp="Thromb.count", type="Dunnett",
-  base=3, alternative="greater", covar.equal=FALSE)
+comp1 <- SimTestDiff(data=coagulation, grp="Group", resp="Thromb.count",
+  type="Dunnett", base=3, alternative="greater", covar.equal=FALSE)
 comp1
 
 # Example 2:
@@ -94,7 +97,8 @@ comp1
 
 data(coagulation)
 
-comp2 <- SimTestDiff(data=coagulation, grp="Group", resp=c("Thromb.count","ADP","TRAP"), type="Dunnett",
-  base=3, alternative="greater", covar.equal=FALSE)
+comp2 <- SimTestDiff(data=coagulation, grp="Group",
+  resp=c("Thromb.count","ADP","TRAP"), type="Dunnett", base=3,
+  alternative="greater", covar.equal=FALSE)
 summary(comp2)
 }

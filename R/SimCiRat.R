@@ -123,4 +123,3 @@ class(out) <- "SimCi"
 return(out)
 
 }
-

@@ -31,4 +31,3 @@ cat("", "\n")
 invisible(x)
 
 }
-

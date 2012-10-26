@@ -41,8 +41,8 @@ lower <- upper <- lower.raw <- upper.raw <- matrix(nrow=ncomp,ncol=nep)
 
 if (alternative=="greater") {
   for (z in 1:ncomp) { for (i in 1:nep) {
-    lo1malqu <- qmvt(conf.level,tail="lower.tail",df=defrvec[z],corr=R)$quantile
-    univarqu <- qt(p=conf.level, df=defrvec[z])
+    lo1malqu <- qmvt(conf.level,tail="lower.tail",df=as.integer(defrvec[z]),corr=R)$quantile
+    univarqu <- qt(p=conf.level, df=defrmat[z,i])
     upper[z,i] <- upper.raw[z,i] <- Inf
     lower[z,i]     <- t(Cmat[z,])%*%meanmat[,i] - lo1malqu * sqrt( t(Cmat[z,])%*%diag(varmat[,i])%*%M%*%Cmat[z,] )
     lower.raw[z,i] <- t(Cmat[z,])%*%meanmat[,i] - univarqu * sqrt( t(Cmat[z,])%*%diag(varmat[,i])%*%M%*%Cmat[z,] )
@@ -50,8 +50,8 @@ if (alternative=="greater") {
 }
 if (alternative=="less") {
   for (z in 1:ncomp) { for (i in 1:nep) {
-    up1malqu <- qmvt(conf.level,tail="upper.tail",df=defrvec[z],corr=R)$quantile
-    univarqu <- qt(p=1-conf.level, df=defrvec[z])
+    up1malqu <- qmvt(conf.level,tail="upper.tail",df=as.integer(defrvec[z]),corr=R)$quantile
+    univarqu <- qt(p=1-conf.level, df=defrmat[z,i])
     upper[z,i]     <- t(Cmat[z,])%*%meanmat[,i] - up1malqu * sqrt( t(Cmat[z,])%*%diag(varmat[,i])%*%M%*%Cmat[z,] )
     upper.raw[z,i] <- t(Cmat[z,])%*%meanmat[,i] - univarqu * sqrt( t(Cmat[z,])%*%diag(varmat[,i])%*%M%*%Cmat[z,] )
     lower[z,i] <- lower.raw[z,i] <- -Inf
@@ -59,8 +59,8 @@ if (alternative=="less") {
 }
 if (alternative=="two.sided") {
   for (z in 1:ncomp) { for (i in 1:nep) {
-    ts1malqu <- qmvt(conf.level,tail="both.tails",df=defrvec[z],corr=R)$quantile
-    univarqu <- qt(p=1-(1-conf.level)/2, df=defrvec[z])
+    ts1malqu <- qmvt(conf.level,tail="both.tails",df=as.integer(defrvec[z]),corr=R)$quantile
+    univarqu <- qt(p=1-(1-conf.level)/2, df=defrmat[z,i])
     upper[z,i]     <- t(Cmat[z,])%*%meanmat[,i] + ts1malqu * sqrt( t(Cmat[z,])%*%diag(varmat[,i])%*%M%*%Cmat[z,] )
     upper.raw[z,i] <- t(Cmat[z,])%*%meanmat[,i] + univarqu * sqrt( t(Cmat[z,])%*%diag(varmat[,i])%*%M%*%Cmat[z,] )
     lower[z,i]     <- t(Cmat[z,])%*%meanmat[,i] - ts1malqu * sqrt( t(Cmat[z,])%*%diag(varmat[,i])%*%M%*%Cmat[z,] )
@@ -73,4 +73,3 @@ list(estimate=estimate, lower.raw=lower.raw, upper.raw=upper.raw, lower=lower, u
      Cmat=Cmat, alternative=alternative, conf.level=conf.level)
 
 }
-

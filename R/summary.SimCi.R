@@ -57,4 +57,3 @@ if (object$test.class=="ratios" && object$NSD>0) {
 }
 
 }
-

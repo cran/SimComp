@@ -121,4 +121,3 @@ class(out) <- "SimTest"
 return(out)
 
 }
-

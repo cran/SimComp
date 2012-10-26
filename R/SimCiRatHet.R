@@ -50,8 +50,8 @@ NSD <- 0
 
 if (alternative=="greater") {
   for (z in 1:ncomp) { for (i in 1:nep) {
-    lo1malqu <- qmvt(conf.level,tail="lower.tail",df=defrvec[z],corr=R)$quantile
-    univarqu <- qt(p=conf.level, df=defrvec[z])
+    lo1malqu <- qmvt(conf.level,tail="lower.tail",df=as.integer(defrvec[z]),corr=R)$quantile
+    univarqu <- qt(p=conf.level, df=defrmat[z,i])
     Azi[z,i] <- ( t(DMat[z,])%*%meanmat[,i] )^2 - lo1malqu^2 * ( t(DMat[z,])%*%diag(varmat[,i])%*%M%*%DMat[z,] )
     Bzi[z,i] <- -2 * ( (t(CMat[z,])%*%meanmat[,i]) * (t(DMat[z,])%*%meanmat[,i])
                                                 - lo1malqu^2 * ( t(CMat[z,])%*%diag(varmat[,i])%*%M%*%DMat[z,] ) )
@@ -78,8 +78,8 @@ if (alternative=="greater") {
 }
 if (alternative=="less") {
   for (z in 1:ncomp) { for (i in 1:nep) {
-    up1malqu <- qmvt(conf.level,tail="upper.tail",df=defrvec[z],corr=R)$quantile
-    univarqu <- qt(p=1-conf.level, df=defrvec[z])
+    up1malqu <- qmvt(conf.level,tail="upper.tail",df=as.integer(defrvec[z]),corr=R)$quantile
+    univarqu <- qt(p=1-conf.level, df=defrmat[z,i])
     Azi[z,i] <- ( t(DMat[z,])%*%meanmat[,i] )^2 - up1malqu^2 * ( t(DMat[z,])%*%diag(varmat[,i])%*%M%*%DMat[z,] )
     Bzi[z,i] <- -2 * ( (t(CMat[z,])%*%meanmat[,i]) * (t(DMat[z,])%*%meanmat[,i])
                                                 - up1malqu^2 * ( t(CMat[z,])%*%diag(varmat[,i])%*%M%*%DMat[z,] ) )
@@ -106,8 +106,8 @@ if (alternative=="less") {
 }
 if (alternative=="two.sided") {
   for (z in 1:ncomp) { for (i in 1:nep) {
-    ts1malqu <- qmvt(conf.level,tail="both.tails",df=defrvec[z],corr=R)$quantile
-    univarqu <- qt(p=1-(1-conf.level)/2, df=defrvec[z])
+    ts1malqu <- qmvt(conf.level,tail="both.tails",df=as.integer(defrvec[z]),corr=R)$quantile
+    univarqu <- qt(p=1-(1-conf.level)/2, df=defrmat[z,i])
     Azi[z,i] <- ( t(DMat[z,])%*%meanmat[,i] )^2 - ts1malqu^2 * ( t(DMat[z,])%*%diag(varmat[,i])%*%M%*%DMat[z,] )
     Bzi[z,i] <- -2 * ( (t(CMat[z,])%*%meanmat[,i]) * (t(DMat[z,])%*%meanmat[,i])
                                                 - ts1malqu^2 * ( t(CMat[z,])%*%diag(varmat[,i])%*%M%*%DMat[z,] ) )
@@ -138,4 +138,3 @@ list(estimate=estimate, NSD=NSD, lower.raw=lower.raw, upper.raw=upper.raw, lower
      Num.Contrast=CMat, Den.Contrast=DMat, alternative=alternative, conf.level=conf.level)
 
 }
-

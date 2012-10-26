@@ -68,4 +68,3 @@ list(estimate=estimate, lower.raw=lower.raw, upper.raw=upper.raw, lower=lower, u
      Cmat=Cmat, alternative=alternative, conf.level=conf.level)
 
 }
-

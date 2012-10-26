@@ -133,4 +133,3 @@ list(estimate=estimate, NSD=NSD, lower.raw=lower.raw, upper.raw=upper.raw, lower
      Num.Contrast=CMat, Den.Contrast=DMat, alternative=alternative, conf.level=conf.level)
 
 }
-

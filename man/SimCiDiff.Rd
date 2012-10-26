@@ -12,8 +12,9 @@ only a single endpoint and unequal covariance matrices (variances), the procedur
 coincides with the PI procedure of Hasler and Hothorn (2008).
 }
 \usage{
-SimCiDiff(data, grp, resp = NULL, type = "Dunnett", base = 1, ContrastMat = NULL,
-           alternative = "two.sided", covar.equal = FALSE, conf.level = 0.95)
+SimCiDiff(data, grp, resp = NULL, type = "Dunnett", base = 1,
+  ContrastMat = NULL, alternative = "two.sided", covar.equal = FALSE,
+  conf.level = 0.95)
 }
 \arguments{
   \item{data}{ a data frame containing a grouping variable and the endpoints as
@@ -119,8 +120,8 @@ heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.
 
 data(coagulation)
 
-interv1 <- SimCiDiff(data=coagulation, grp="Group", resp="Thromb.count", type="Dunnett",
-  base=3, alternative="greater", covar.equal=FALSE)
+interv1 <- SimCiDiff(data=coagulation, grp="Group", resp="Thromb.count",
+  type="Dunnett", base=3, alternative="greater", covar.equal=FALSE)
 interv1
 
 # Example 2:
@@ -130,8 +131,9 @@ interv1
 
 data(coagulation)
 
-interv2 <- SimCiDiff(data=coagulation, grp="Group", resp=c("Thromb.count","ADP","TRAP"), type="Dunnett",
-  base=3, alternative="greater", covar.equal=FALSE)
+interv2 <- SimCiDiff(data=coagulation, grp="Group",
+  resp=c("Thromb.count","ADP","TRAP"), type="Dunnett", base=3,
+  alternative="greater", covar.equal=FALSE)
 summary(interv2)
 }
 \keyword{ htest }

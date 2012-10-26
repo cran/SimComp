@@ -53,4 +53,3 @@ list(estimate=estimate, statistic=test.stat, p.val.raw=p.val.raw, p.val.adj=p.va
      Cmat=Cmat, Margin=Margin, alternative=alternative)
 
 }
-

@@ -4,7 +4,7 @@
 \description{
 Simultaneous tests for ratios of contrasts (linear functions) of normal means (e.g.,
 "Dunnett", "Tukey", "Williams" ect.) when there is more than one primary response
-variable (endpoint). The procedure of Hasler and Hothorn (2011) is applied for
+variable (endpoint). The procedure of Hasler and Hothorn (2012) is applied for
 ratios of means of normally distributed data. The covariance matrices (containing
 the covariances between the endpoints) may be assumed to be equal or possibly
 unequal for the different groups. For the case of only a single endpoint and
@@ -72,7 +72,7 @@ multiple endpoints. For example, the all-pair comparison of Tukey (1953) and the
 many-to-one comparison of Dunnett (1955) for ratios of means are implemented, but
 allowing for multiple endpoints. Also, the user is free to create other interesting
 problem-specific contrasts. An approximate multivariate \emph{t}-distribution is
-used to calculate (adjusted) \emph{p}-values (see Hasler and Hothorn, 2011). This
+used to calculate (adjusted) \emph{p}-values (see Hasler and Hothorn, 2012). This
 approach controls the familywise error rate in an admissible range and in the
 strong sense. The covariance matrices of the treatment groups (containing the
 covariances between the endpoints) can be assumed to be equal
@@ -114,8 +114,8 @@ value(s) are used for the remaining comparisons or endpoints. If \code{Margin} i
 not specified, the default is 1.
 }
 \references{
-Hasler, M. and Hothorn, L.A. (2011): A Dunnett-type procedure for multiple endpoints.
-\emph{The International Journal of Biostatistics} 7, Article 3.
+Hasler, M. and Hothorn, L.A. (2012): A multivariate Williams-type trend procedure.
+\emph{Statistics in Biopharmaceutical Research} 4, 57-65.
 
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence of
 heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.

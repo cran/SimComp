@@ -7,7 +7,8 @@ variance vector and approximate correlation matrix. This function is based on th
 function \code{rmvnorm} of the package mvtnorm.
 }
 \usage{
-ermvnorm(n, mean, sd, corr = diag(rep(1, length(mean))), mnt = 10000)
+ermvnorm(n, mean, sd, corr = diag(rep(1, length(mean))),
+  mnt = 10000)
 }
 \arguments{
   \item{n}{ number of observations }
@@ -56,7 +57,8 @@ concerning type I error or power of statistical tests cannot be based on
 # A dataset representing two correlated endpoints.
 
 set.seed(1234)
-dataset1 <- ermvnorm(n=10,mean=c(10,120),sd=c(1,10),corr=rbind(c(1,0.7),c(0.7,1)))
+dataset1 <- ermvnorm(n=10, mean=c(10,120), sd=c(1,10),
+  corr=rbind(c(1,0.7),c(0.7,1)))
 dataset1
 mean(dataset1[,1]); mean(dataset1[,2])
 sd(dataset1[,1]); sd(dataset1[,2])
@@ -67,7 +69,7 @@ pairs(dataset1)
 # A dataset representing three uncorrelated endpoints.
 
 set.seed(5678)
-dataset2 <- ermvnorm(n=20,mean=c(1,12,150),sd=c(0.5,2,20))
+dataset2 <- ermvnorm(n=20, mean=c(1,12,150), sd=c(0.5,2,20))
 dataset2
 mean(dataset2[,1]); mean(dataset2[,2]); mean(dataset2[,3])
 sd(dataset2[,1]); sd(dataset2[,2]); sd(dataset2[,3])

@@ -42,15 +42,15 @@ for (z in 1:ncomp) { for (i in 1:nep) {
   test.stat[z,i]=( (t(Cmat[z,])%*%meanmat[,i]) - Margin[z,i] ) /
                  sqrt( t(Cmat[z,])%*%diag(varmat[,i])%*%M%*%(Cmat[z,]) )
   if (alternative=="greater") {
-    p.val.adj[z,i]=1-pmvt(lower=-Inf,upper=rep(test.stat[z,i],times=ncomp*nep),df=defrvec[z],corr=R)[1]
-    p.val.raw[z,i]=pt(q=test.stat[z,i],df=defrvec[z],lower.tail=FALSE) }
+    p.val.adj[z,i]=1-pmvt(lower=-Inf,upper=rep(test.stat[z,i],times=ncomp*nep),df=as.integer(defrvec[z]),corr=R)[1]
+    p.val.raw[z,i]=pt(q=test.stat[z,i],df=defrmat[z,i],lower.tail=FALSE) }
   if (alternative=="less") {
-    p.val.adj[z,i]=1-pmvt(lower=rep(test.stat[z,i],times=ncomp*nep),upper=Inf,df=defrvec[z],corr=R)[1]
-    p.val.raw[z,i]=pt(q=test.stat[z,i],df=defrvec[z],lower.tail=TRUE) }
+    p.val.adj[z,i]=1-pmvt(lower=rep(test.stat[z,i],times=ncomp*nep),upper=Inf,df=as.integer(defrvec[z]),corr=R)[1]
+    p.val.raw[z,i]=pt(q=test.stat[z,i],df=defrmat[z,i],lower.tail=TRUE) }
   if (alternative=="two.sided") {
     p.val.adj[z,i]=1-pmvt(lower=rep(-abs(test.stat[z,i]),times=ncomp*nep),upper=rep(abs(test.stat[z,i]),times=ncomp*nep),
-                   df=defrvec[z],corr=R)[1]
-    p.val.raw[z,i]=min(pt(q=abs(test.stat[z,i]),df=defrvec[z],lower.tail=FALSE)*2,1) }
+                   df=as.integer(defrvec[z]),corr=R)[1]
+    p.val.raw[z,i]=min(pt(q=abs(test.stat[z,i]),df=defrmat[z,i],lower.tail=FALSE)*2,1) }
 }}
 
 list(estimate=estimate, statistic=test.stat, p.val.raw=p.val.raw, p.val.adj=p.val.adj,
@@ -58,4 +58,3 @@ list(estimate=estimate, statistic=test.stat, p.val.raw=p.val.raw, p.val.adj=p.va
      Cmat=Cmat, Margin=Margin, alternative=alternative)
 
 }
-

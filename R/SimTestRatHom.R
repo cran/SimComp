@@ -61,4 +61,3 @@ list(estimate=estimate, statistic=test.stat, p.val.raw=p.val.raw, p.val.adj=p.va
      Num.Contrast=CMat, Den.Contrast=DMat, Margin=Margin, alternative=alternative)
 
 }
-
