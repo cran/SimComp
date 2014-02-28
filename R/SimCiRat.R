@@ -8,9 +8,9 @@ if (length(grp) > 1) {
   stop("Specify only one grouping variable")
 }
 tr.names <- levels(data[,grp])
-ntr <- length(levels(data[,grp]))                                        # number of treatments
-trlist <- split(x=data,f=data[,grp])                                     # data list splitted into the different treatments
-ssvec <- numeric(ntr)                                                    # sample sizes for the treatments
+ntr <- length(levels(data[,grp]))                                   # number of treatments
+trlist <- split(x=data,f=data[,grp])                                # data list splitted into the different treatments
+ssvec <- numeric(ntr)                                               # sample sizes for the treatments
 for (i in 1: ntr) {
   ssvec[i] <- nrow(trlist[[i]])
 }
@@ -18,7 +18,7 @@ for (i in 1: ntr) {
 if (is.null(resp)) {
   resp <- names(data[,-which(names(data)%in%grp),drop=FALSE])
 } 
-nep <- length(resp)                                                      # number of endpoints
+nep <- length(resp)                                                 # number of endpoints
 
 if (covar.equal==TRUE) {
   if ( sum(ssvec-1)<nep ) {
@@ -31,7 +31,7 @@ if (covar.equal==TRUE) {
 }
 
 for (i in 1:ntr) {
-  trlist[[i]] <- as.matrix(trlist[[i]][,resp])                           # data list without factor
+  trlist[[i]] <- as.matrix(trlist[[i]][,resp])                      # data list without factor
 }
 
 for (i in 1:ntr) {

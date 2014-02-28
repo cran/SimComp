@@ -5,16 +5,16 @@
 Simultaneous confidence intervals for ratios of contrasts (linear functions) of
 normal means (e.g., "Dunnett", "Tukey", "Williams" ect.) when there is more than
 one primary response variable (endpoint). The procedure of Hasler and Hothorn
-(2012) is applied for ratios of means of normally distributed data. The covariance
+(2011) is applied for ratios of means of normally distributed data. The covariance
 matrices (containing the covariances between the endpoints) may be assumed to be
 equal or possibly unequal for the different groups. For the case of only a single
 endpoint and unequal covariance matrices (variances), the procedure coincides with
 the PI procedure of Hasler and Hothorn (2008).
 }
 \usage{
-SimCiRat(data, grp, resp = NULL, type = "Dunnett", base = 1,
-  Num.Contrast = NULL, Den.Contrast = NULL, alternative = "two.sided",
-  covar.equal = FALSE, conf.level = 0.95)
+SimCiRat(data, grp, resp = NULL, type = "Dunnett", base = 1, Num.Contrast = NULL,
+          Den.Contrast = NULL, alternative = "two.sided", covar.equal = FALSE,
+          conf.level = 0.95)
 }
 \arguments{
   \item{data}{ a data frame containing a grouping variable and the endpoints as
@@ -71,7 +71,7 @@ all-pair comparison of Tukey (1953) and the many-to-one comparison of Dunnett (1
 for ratios of means are implemented, but allowing for multiple endpoints. Also, the
 user is free to create other interesting problem-specific contrasts. An approximate
 multivariate \emph{t}-distribution is used to calculate lower and upper limits (see
-Hasler and Hothorn, 2012). Simultaneous tests based on these intervals control
+Hasler and Hothorn, 2011). Simultaneous tests based on these intervals control
 the familywise error rate in an admissible range and in the strong sense. The
 covariance matrices of the treatment groups (containing the covariances between the
 endpoints) can be assumed to be equal (\code{covar.equal=TRUE}) or unequal
@@ -113,11 +113,11 @@ In contrast to simultaneous confidence intervals for differences, the correlatio
 matrix for the multivariate \emph{t}-distribution depends on the unknown ratios. The
 same problem also arises for the degrees of freedom if the covariance matrices for
 the different groups are assumed to be unequal (\code{covar.equal=FALSE}). Both
-problems are handled by a plug-in approach, see the references therefore.
+problems can be handled by a plug-in approach, see the references therefore.
 }
 \references{
-Hasler, M. and Hothorn, L.A. (2012): A multivariate Williams-type trend procedure.
-\emph{Statistics in Biopharmaceutical Research} 4, 57-65.
+Hasler, M. and Hothorn, L.A. (2011): A Dunnett-type procedure for multiple endpoints.
+\emph{The International Journal of Biostatistics} 7, Article 3.
 
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence of
 heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.
@@ -138,8 +138,8 @@ multiple ratios. \emph{Journal of Statistical Planning and Inference} 136, 2640-
 
 data(coagulation)
 
-interv1 <- SimCiRat(data=coagulation, grp="Group", resp="Thromb.count", type="Dunnett",
-  base=3, alternative="greater", covar.equal=FALSE)
+interv1 <- SimCiRat(data=coagulation, grp="Group", resp="Thromb.count",
+  type="Dunnett", base=3, alternative="greater", covar.equal=FALSE)
 interv1
 
 # Example 2:
@@ -149,8 +149,8 @@ interv1
 
 data(coagulation)
 
-interv2 <- SimCiRat(data=coagulation, grp="Group", resp=c("Thromb.count","ADP","TRAP"), type="Dunnett",
-  base=3, alternative="greater", covar.equal=FALSE)
+interv2 <- SimCiRat(data=coagulation, grp="Group", resp=c("Thromb.count","ADP","TRAP"),
+  type="Dunnett", base=3, alternative="greater", covar.equal=FALSE)
 summary(interv2)
 }
 \keyword{ htest }

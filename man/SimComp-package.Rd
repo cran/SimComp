@@ -29,14 +29,14 @@ with heterogeneous covariance matrices and in terms of ratios.
 
 For multiple comparisons of means of heteroscedastic data, see
 Hasler and Hothorn (2008). The test procedure for multiple
-endpoints is described by Hasler and Hothorn (2011).
+endpoints is described by Hasler and Hothorn (2011,2012).
 }
 \details{
 \tabular{ll}{
 Package: \tab SimComp\cr
 Type: \tab Package\cr
-Version: \tab 1.7.0\cr
-Date: \tab 2012-10-26\cr
+Version: \tab 1.9.0\cr
+Date: \tab 2014-02-28\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }
@@ -63,11 +63,11 @@ Mario Hasler
 Maintainer: Mario Hasler <hasler@email.uni-kiel.de>
 }
 \references{
+Hasler, M. and Hothorn, L.A. (2012): A multivariate Williams-type trend procedure.
+\emph{Statistics in Biopharmaceutical Research} 4, 57--65.
+
 Hasler, M. and Hothorn, L.A. (2011): A Dunnett-type procedure for multiple endpoints.
 \emph{The International Journal of Biostatistics} 7, Article 3.
-
-Hasler, M. and Hothorn, L.A. (2012): A multivariate Williams-type trend procedure.
-\emph{Statistics in Biopharmaceutical Research} 4, 57-65.
 
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence of
 heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.
@@ -97,8 +97,7 @@ comp1
 
 data(coagulation)
 
-comp2 <- SimTestDiff(data=coagulation, grp="Group",
-  resp=c("Thromb.count","ADP","TRAP"), type="Dunnett", base=3,
-  alternative="greater", covar.equal=FALSE)
+comp2 <- SimTestDiff(data=coagulation, grp="Group", resp=c("Thromb.count","ADP","TRAP"),
+  type="Dunnett", base=3, alternative="greater", covar.equal=FALSE)
 summary(comp2)
 }

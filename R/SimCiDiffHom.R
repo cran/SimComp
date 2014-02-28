@@ -2,19 +2,19 @@ SimCiDiffHom <-
 function(trlist, grp, ntr, nep, ssvec, Cmat, alternative, conf.level) {
 
 
-ncomp <- nrow(Cmat)                                                      # number of comparisons
+ncomp <- nrow(Cmat)                                                 # number of comparisons
 
 meanmat <- matrix(nrow=ntr, ncol=nep)
 for (i in 1:ntr) { for (j in 1:nep) {
   meanmat[i,j]=mean(trlist[[i]][,j]) }}
 estimate <- Cmat%*%meanmat
 
-defr <- sum(ssvec)-ntr                                                   # degrees of freedom
+defr <- sum(ssvec)-ntr                                              # degrees of freedom
 
-CovMatDat <- matrix(rep(0,nep*nep),nrow=nep)                             # common covariance matrix of the data
+CovMatDat <- matrix(rep(0,nep*nep),nrow=nep)                        # common covariance matrix of the data
 for (i in 1:ntr) { CovMatDat <- CovMatDat+(ssvec[i]-1)*cov(trlist[[i]]) }
 CovMatDat <- CovMatDat/defr
-CorrMatDat <- cov2cor(CovMatDat)                                         # common correlation matrix of the data
+CorrMatDat <- cov2cor(CovMatDat)                                    # common correlation matrix of the data
 
 M <- diag(1/ssvec)
 R <- NULL
@@ -28,7 +28,7 @@ for (z in 1:ncomp) {
     }
     Rrow <- cbind(Rrow,Rpart)
   }
-  R <- rbind(R, Rrow)                                                    # correlation matrix for test.stat
+  R <- rbind(R, Rrow)                                               # correlation matrix for test.stat
 }
 diag(R) <- 1
 

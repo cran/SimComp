@@ -123,8 +123,8 @@ heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.
 
 data(coagulation)
 
-comp1 <- SimTestDiff(data=coagulation, grp="Group", resp="Thromb.count", type="Dunnett",
-  base=3, alternative="greater", covar.equal=FALSE)
+comp1 <- SimTestDiff(data=coagulation, grp="Group", resp="Thromb.count",
+  type="Dunnett", base=3, alternative="greater", covar.equal=FALSE)
 comp1
 
 # Example 2:
@@ -134,8 +134,8 @@ comp1
 
 data(coagulation)
 
-comp2 <- SimTestDiff(data=coagulation, grp="Group", resp=c("Thromb.count","ADP","TRAP"), type="Dunnett",
-  base=3, alternative="greater", covar.equal=FALSE)
+comp2 <- SimTestDiff(data=coagulation, grp="Group", resp=c("Thromb.count","ADP","TRAP"),
+  type="Dunnett", base=3, alternative="greater", covar.equal=FALSE)
 summary(comp2)
 }
 \keyword{ htest }

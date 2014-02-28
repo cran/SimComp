@@ -18,7 +18,7 @@ if (det(corr) <= 0) {
   stop("corr must be positive definite")
 }
 
-trafomat <- diag(sd)# sd's on the diagonal
+trafomat <- diag(sd)    # sd's on the diagonal
 kovarmat <- trafomat%*%corr%*%trafomat
 Counter <- 0
  

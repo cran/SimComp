@@ -2,7 +2,7 @@ SimTestDiffHet <-
 function(trlist, grp, ntr, nep, ssvec, Cmat, alternative, Margin) {
 
 
-ncomp <- nrow(Cmat)                                                      # number of comparisons
+ncomp <- nrow(Cmat)                                                 # number of comparisons
 
 meanmat <- varmat <- matrix(nrow=ntr, ncol=nep)
 for (i in 1:ntr) { for (j in 1:nep) {
@@ -13,10 +13,10 @@ defrmat <- matrix(nrow=ncomp, ncol=nep)
 for (j in 1:nep) { for (z in 1:ncomp) {
 defrmat[z,j]=( (sum((Cmat[z,])^2*varmat[,j]/ssvec))^2 ) / 
              sum( ( (Cmat[z,])^4*varmat[,j]^2 ) / ( ssvec^2*(ssvec-1) ) ) }}
-defrmat[defrmat<2] <- 2                                                  # to be well-defined
-defrvec <- apply(X=defrmat, MARGIN=1, FUN=min)                           # minimum over the rows/endpoints
+defrmat[defrmat<2] <- 2                                             # to be well-defined
+defrvec <- apply(X=defrmat, MARGIN=1, FUN=min)                      # minimum over the rows/endpoints
 
-CovMatDat <- CorrMatDat <- list()                                        # list of covariance/correlation matrices of the data
+CovMatDat <- CorrMatDat <- list()                                   # list of covariance/correlation matrices of the data
 for (i in 1:ntr) { CovMatDat[[i]]  <- cov(trlist[[i]])
                    CorrMatDat[[i]] <- cov2cor(CovMatDat[[i]]) }
 
@@ -33,11 +33,11 @@ for (z in 1:ncomp) {
     }
     Rrow <- cbind(Rrow,Rpart)
   }
-  R <- rbind(R, Rrow)                                                    # correlation matrix for test.stat
+  R <- rbind(R, Rrow)                                               # correlation matrix for test.stat
 }
 diag(R) <- 1
 
-test.stat <- p.val.adj <- p.val.raw <- matrix(nrow=ncomp, ncol=nep)      # matrices of test statistics and p.vals
+test.stat <- p.val.adj <- p.val.raw <- matrix(nrow=ncomp, ncol=nep) # matrices of test statistics and p.vals
 for (z in 1:ncomp) { for (i in 1:nep) {
   test.stat[z,i]=( (t(Cmat[z,])%*%meanmat[,i]) - Margin[z,i] ) /
                  sqrt( t(Cmat[z,])%*%diag(varmat[,i])%*%M%*%(Cmat[z,]) )

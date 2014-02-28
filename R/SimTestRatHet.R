@@ -4,7 +4,7 @@ function(trlist, grp, ntr, nep, ssvec, Num.Contrast, Den.Contrast, alternative, 
 
 CMat <- Num.Contrast
 DMat <- Den.Contrast
-ncomp <- nrow(CMat)                                                      # number of comparisons
+ncomp <- nrow(CMat)                                                 # number of comparisons
 
 meanmat <- varmat <- matrix(nrow=ntr, ncol=nep)
 for (i in 1:ntr) { for (j in 1:nep) {
@@ -19,10 +19,10 @@ defrmat <- matrix(nrow=ncomp, ncol=nep)
 for (j in 1:nep) { for (z in 1:ncomp) {
 defrmat[z,j]=( (sum((CMat[z,]-Margin[z,j]*DMat[z,])^2*varmat[,j]/ssvec))^2 ) / 
              sum( ( (CMat[z,]-Margin[z,j]*DMat[z,])^4*varmat[,j]^2 ) / ( ssvec^2*(ssvec-1) ) ) }}
-defrmat[defrmat<2] <- 2                                                  # to be well-defined
-defrvec <- apply(X=defrmat, MARGIN=1, FUN=min)                           # minimum over the rows/endpoints
+defrmat[defrmat<2] <- 2                                             # to be well-defined
+defrvec <- apply(X=defrmat, MARGIN=1, FUN=min)                      # minimum over the rows/endpoints
 
-CovMatDat <- CorrMatDat <- list()                                        # list of covariance/correlation matrices of the data
+CovMatDat <- CorrMatDat <- list()                                   # list of covariance/correlation matrices of the data
 for (i in 1:ntr) { CovMatDat[[i]]  <- cov(trlist[[i]])
                    CorrMatDat[[i]] <- cov2cor(CovMatDat[[i]]) }
 
@@ -40,11 +40,11 @@ for (z in 1:ncomp) {
     }
     Rrow <- cbind(Rrow,Rpart)
   }
-  R <- rbind(R, Rrow)                                                    # correlation matrix for test.stat
+  R <- rbind(R, Rrow)                                               # correlation matrix for test.stat
 }
 diag(R) <- 1
 
-test.stat <- p.val.adj <- p.val.raw <- matrix(nrow=ncomp, ncol=nep)      # matrices of test statistics and p.vals
+test.stat <- p.val.adj <- p.val.raw <- matrix(nrow=ncomp, ncol=nep) # matrices of test statistics and p.vals
 for (z in 1:ncomp) { for (i in 1:nep) {
   test.stat[z,i]=( t(CMat[z,]-Margin[z,i]*DMat[z,])%*%meanmat[,i] ) /
                  sqrt( t(CMat[z,]-Margin[z,i]*DMat[z,])%*%diag(varmat[,i])%*%M%*%(CMat[z,]-Margin[z,i]*DMat[z,]) )
