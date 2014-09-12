@@ -31,4 +31,5 @@ if (x$test.class=="ratios" && x$NSD>0) {
 
 invisible(x)
 
+
 }

@@ -5,15 +5,15 @@
 Simultaneous confidence intervals for general contrasts (linear functions) of
 normal means (e.g., "Dunnett", "Tukey", "Williams" ect.) when there is more than
 one primary response variable (endpoint). The procedure of Hasler and Hothorn
-(2011) is applied for differences of means of normally distributed data. The
-covariance matrices (containing the covariances between the endpoints) may be
-assumed to be equal or possibly unequal for the different groups. For the case of
+(2011) is applied for differences of means of normally distributed data. The covariance
+matrices (containing the covariances between the endpoints) may be assumed to be
+equal or possibly unequal for the different groups (Hasler, 2014). For the case of
 only a single endpoint and unequal covariance matrices (variances), the procedure
 coincides with the PI procedure of Hasler and Hothorn (2008).
 }
 \usage{
 SimCiDiff(data, grp, resp = NULL, type = "Dunnett", base = 1, ContrastMat = NULL,
-           alternative = "two.sided", covar.equal = FALSE, conf.level = 0.95)
+          alternative = "two.sided", covar.equal = FALSE, conf.level = 0.95)
 }
 \arguments{
   \item{data}{ a data frame containing a grouping variable and the endpoints as
@@ -67,10 +67,10 @@ Hothorn, 2011). Simultaneous tests based on these intervals control the familywi
 error rate in an admissible range and in the strong sense. The covariance matrices
 of the treatment groups (containing the covariances between the endpoints) can be
 assumed to be equal (\code{covar.equal=TRUE}) or unequal (\code{covar.equal=FALSE}).
-If being equal, the pooled covariance matrix is used, otherwise Satterthwaite
-approximations to the degrees of freedom are used according to Hasler and Hothorn
-(2008). Unequal covariance matrices occure if variances or correlations of some
-endpoints differ depending on the treatment groups.
+If being equal, the pooled covariance matrix is used, otherwise approximations to
+the degrees of freedom (Satterthwaite, 1946) are used (see Hasler, 2014). Unequal
+covariance matrices occure if variances or correlations of some endpoints differ
+depending on the treatment groups.
 }
 \value{
 An object of class SimCi containing:
@@ -97,25 +97,31 @@ the number of treatment groups. If \code{covar.equal=FALSE}, the number of endpo
 must not be greater than the minimal sample size minus 1. Otherwise the procedure
 stops.
 
-All the intervals have the same direction for all comparisons and endpoints
+All intervals have the same direction for all comparisons and endpoints
 (\code{alternative="..."}). In case of doubt, use \code{"two.sided"}.
 }
 \references{
+Hasler, M. (2014): Multiple contrast tests for multiple endpoints in the presence of 
+heteroscedasticity. \emph{The International Journal of Biostatistics} 10, 17--28.
+
 Hasler, M. and Hothorn, L.A. (2011): A Dunnett-type procedure for multiple endpoints.
 \emph{The International Journal of Biostatistics} 7, Article 3.
 
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence of
-heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.
+heteroscedasticity. \emph{Biometrical Journal} 50, 793--800.
+
+Satterthwaite, F.E. (1946): An approximate distribution of estimates of variance
+components. \emph{Biometrics} 2, 110--114.
 }
 \author{ Mario Hasler }
 \seealso{ \code{\link{SimCiRat}}, \code{\link{SimTestDiff}},
           \code{\link{SimTestRat}} }
 \examples{
 # Example 1:
-# Simultaneous confidence intervals related to a Dunnett-test for the groups
-# B and H against the standard S, on the (single) endpoint Thromb.count,
-# assuming unequal variances for the groups. These are the well-known
-# Dunnett-intervals but in the presence of heteroscedasticity.
+# Simultaneous confidence intervals related to a comparison of the groups
+# B and H against the standard S, on endpoint Thromb.count, assuming unequal
+# variances for the groups. This is an extension of the well-known Dunnett-
+# intervals to the case of heteroscedasticity.
 
 data(coagulation)
 
@@ -124,9 +130,11 @@ interv1 <- SimCiDiff(data=coagulation, grp="Group", resp="Thromb.count",
 interv1
 
 # Example 2:
-# Simultaneous confidence intervals related to a Dunnett-test for the groups
+# Simultaneous confidence intervals related to a comparisons of the groups
 # B and H against the standard S, simultaneously on all endpoints, assuming
-# unequal covariance matrices for the groups.
+# unequal covariance matrices for the groups. This is an extension of the well-
+# known Dunnett-intervals to the case of heteroscedasticity and multiple
+# endpoints.
 
 data(coagulation)
 

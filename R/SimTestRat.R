@@ -43,18 +43,18 @@ for (i in 1:ntr) {
   }
 }
 
-if (is.null(Num.Contrast)==FALSE || is.null(Num.Contrast)==FALSE) {
-  if (is.null(Den.Contrast==TRUE) && is.null(Den.Contrast==FALSE)) {
+if ( is.null(Num.Contrast)+is.null(Den.Contrast)<2 ) {              # if at most one matrix is missing
+  if (!is.null(Num.Contrast) & is.null(Den.Contrast)) {
     stop("Num.Contrast is specified, but Den.Contrast is missing")
   }
-  if (is.null(Den.Contrast==FALSE) && is.null(Den.Contrast==TRUE)) {
+  if (is.null(Num.Contrast) & !is.null(Den.Contrast)) {
     stop("Den.Contrast is specified, but Num.Contrast is missing")
   }
-  if (is.null(Den.Contrast)==FALSE && is.null(Num.Contrast)==FALSE) {
-    if (nrow(Den.Contrast)!=nrow(Num.Contrast)) {
+  if (!is.null(Num.Contrast) & !is.null(Den.Contrast)) {
+    if (nrow(Num.Contrast)!=nrow(Den.Contrast)) {
       stop("Number of rows of Num.Contrast and Den.Contrast must be equal")
     }
-    if (ncol(Den.Contrast)!=ntr || ncol(Num.Contrast)!=ntr) {
+    if (ncol(Num.Contrast)!=ntr | ncol(Den.Contrast)!=ntr) {
       stop("Number of columns of Num.Contrast and Den.Contrast and number of groups must be equal")
     }
     NC0 <- apply(X=Num.Contrast, MARGIN=1, function(x) {
@@ -64,7 +64,7 @@ if (is.null(Num.Contrast)==FALSE || is.null(Num.Contrast)==FALSE) {
       all(x==0)
     })
     if (any(c(NC0, DC0))) {
-      cat("Warning: At least one row of the numerator or denominator contrast matrices is a vector with all components", "\n",
+      cat("Warning: At least one row of Num.Contrast or Den.Contrast is a vector with all components", "\n",
           "equal to zero", "\n")
     }
     Num.Cmat <- Num.Contrast
@@ -81,9 +81,9 @@ if (is.null(Num.Contrast)==FALSE || is.null(Num.Contrast)==FALSE) {
       }
     }
   }
-} else {
-  type <- match.arg(type, choices=c("Dunnett", "Tukey", "Sequen", "AVE", "GrandMean", "Changepoint", "Marcus", 
-    "McDermott", "Williams", "UmbrellaWilliams"))
+} else {                                                            # if both matrices are missing
+  type <- match.arg(type, choices=c("Dunnett", "Tukey", "Sequen", "AVE", "GrandMean", "Changepoint", 
+    "Marcus", "McDermott", "Williams", "UmbrellaWilliams"))
   names(ssvec) <- tr.names
   Cmat <- contrMatRatio(n=ssvec, type=type, base=base)
   Num.Cmat <- Cmat$numC
@@ -117,11 +117,11 @@ if (is.numeric(Margin)) {
 }
 
 if (covar.equal==TRUE) {
-  out <- SimTestRatHom(trlist=trlist, grp=grp, ntr=ntr, nep=nep, ssvec=ssvec, Num.Contrast=Num.Cmat, Den.Contrast=Den.Cmat,
-                       alternative=alternative, Margin=Margin)
+  out <- SimTestRatHom(trlist=trlist, grp=grp, ntr=ntr, nep=nep, ssvec=ssvec, Num.Contrast=Num.Cmat,
+                       Den.Contrast=Den.Cmat, alternative=alternative, Margin=Margin)
 } else {
-  out <- SimTestRatHet(trlist=trlist, grp=grp, ntr=ntr, nep=nep, ssvec=ssvec, Num.Contrast=Num.Cmat, Den.Contrast=Den.Cmat,
-                       alternative=alternative, Margin=Margin)
+  out <- SimTestRatHet(trlist=trlist, grp=grp, ntr=ntr, nep=nep, ssvec=ssvec, Num.Contrast=Num.Cmat,
+                       Den.Contrast=Den.Cmat, alternative=alternative, Margin=Margin)
 }
 out$type <- type
 out$test.class <- "ratios"
@@ -144,5 +144,6 @@ if (covar.equal==FALSE) {
 }
 class(out) <- "SimTest"
 return(out)
+
 
 }

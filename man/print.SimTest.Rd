@@ -12,7 +12,7 @@ respectively.
   \item{x}{ an object of class "SimTest" as obtained by calling
             \code{SimTestDiff} or \code{SimTestRat} }
   \item{digits}{ digits for rounding the results }
-  \item{\dots}{ arguments to be passed to print }
+  \item{\dots}{ arguments to be passed to \code{print} }
 }
 \value{
 A print out containing the margins, estimates, test statistics, raw and

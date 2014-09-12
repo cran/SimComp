@@ -137,4 +137,5 @@ list(estimate=estimate, NSD=NSD, lower.raw=lower.raw, upper.raw=upper.raw, lower
      CovMatDat=CovMatDat, CorrMatDat=CorrMatDat, CorrMatComp=R, degr.fr=defrvec, 
      Num.Contrast=CMat, Den.Contrast=DMat, alternative=alternative, conf.level=conf.level)
 
+
 }

@@ -67,4 +67,5 @@ list(estimate=estimate, lower.raw=lower.raw, upper.raw=upper.raw, lower=lower, u
      CovMatDat=CovMatDat, CorrMatDat=CorrMatDat, CorrMatComp=R, degr.fr=defr, 
      Cmat=Cmat, alternative=alternative, conf.level=conf.level)
 
+
 }

@@ -4,12 +4,12 @@
 \description{
 Simultaneous tests for ratios of contrasts (linear functions) of normal means (e.g.,
 "Dunnett", "Tukey", "Williams" ect.) when there is more than one primary response
-variable (endpoint). The procedure of Hasler and Hothorn (2011) is applied for
+variable (endpoint). The procedure of Hasler and Hothorn (2012) is applied for
 ratios of means of normally distributed data. The covariance matrices (containing
 the covariances between the endpoints) may be assumed to be equal or possibly
-unequal for the different groups. For the case of only a single endpoint and
-unequal covariance matrices (variances), the procedure coincides with the PI
-procedure of Hasler and Hothorn (2008).
+unequal for the different groups (Hasler, 2014). For the case of only a single
+endpoint and unequal covariance matrices (variances), the procedure coincides with
+the PI procedure of Hasler and Hothorn (2008).
 }
 \usage{
 SimTestRat(data, grp, resp = NULL, type = "Dunnett", base = 1, Num.Contrast = NULL,
@@ -72,15 +72,15 @@ multiple endpoints. For example, the all-pair comparison of Tukey (1953) and the
 many-to-one comparison of Dunnett (1955) for ratios of means are implemented, but
 allowing for multiple endpoints. Also, the user is free to create other interesting
 problem-specific contrasts. An approximate multivariate \emph{t}-distribution is
-used to calculate (adjusted) \emph{p}-values (see Hasler and Hothorn, 2011). This
+used to calculate (adjusted) \emph{p}-values (see Hasler and Hothorn, 2012). This
 approach controls the familywise error rate in an admissible range and in the
 strong sense. The covariance matrices of the treatment groups (containing the
 covariances between the endpoints) can be assumed to be equal
 (\code{covar.equal=TRUE}) or unequal (\code{covar.equal=FALSE}). If being equal,
-the pooled covariance matrix is used, otherwise Satterthwaite approximations to
-the degrees of freedom are used according to Hasler and Hothorn (2008). Unequal
-covariance matrices occure if variances or correlations of some endpoints differ
-depending on the treatment groups.
+the pooled covariance matrix is used, otherwise approximations to the degrees of
+freedom (Satterthwaite, 1946) are used (see Hasler, 2014). Unequal covariance
+matrices occure if variances or correlations of some endpoints differ depending on
+the treatment groups.
 }
 \value{
 An object of class SimTest containing:
@@ -114,24 +114,30 @@ value(s) are used for the remaining comparisons or endpoints. If \code{Margin} i
 not specified, the default is 1.
 }
 \references{
-Hasler, M. and Hothorn, L.A. (2011): A Dunnett-type procedure for multiple endpoints.
-\emph{The International Journal of Biostatistics} 7, Article 3.
+Hasler, M. (2014): Multiple contrast tests for multiple endpoints in the presence of 
+heteroscedasticity. \emph{The International Journal of Biostatistics} 10, 17--28.
+
+Hasler, M. and Hothorn, L.A. (2012): A multivariate Williams-type trend procedure.
+\emph{Statistics in Biopharmaceutical Research} 4, 57--65.
 
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence of
-heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.
+heteroscedasticity. \emph{Biometrical Journal} 50, 793--800.
 
 Dilba, G. et al. (2006): Simultaneous confidence sets and confidence intervals for
-multiple ratios. \emph{Journal of Statistical Planning and Inference} 136, 2640-2658.
+multiple ratios. \emph{Journal of Statistical Planning and Inference} 136, 2640--2658.
+
+Satterthwaite, F.E. (1946): An approximate distribution of estimates of variance
+components. \emph{Biometrics} 2, 110--114.
 }
 \author{ Mario Hasler }
 \seealso{ \code{\link{SimTestDiff}}, \code{\link{SimCiRat}},
-          \code{\link{SimCiDiff}},  }
+          \code{\link{SimCiDiff}} }
 \examples{
 # Example 1:
-# A Dunnett-test for the groups B and H against the standard S, on the (single)
-# endpoint Thromb.count, assuming unequal variances for the groups, and in terms of
-# ratios. This is the well-known Dunnett-test but in the presence of
-# heteroscedasticity and for ratios of means.
+# A comparison of the groups B and H against the standard S, on endpoint
+# Thromb.count, assuming unequal variances for the groups, and for ratios of
+# means. This is an extension of the well-known Dunnett-test to the case of
+# heteroscedasticity and in terms of ratios of means instead of differences.
 
 data(coagulation)
 
@@ -140,9 +146,11 @@ comp1 <- SimTestRat(data=coagulation, grp="Group", resp="Thromb.count",
 comp1
 
 # Example 2:
-# A Dunnett-test for the groups B and H against the standard S, simultaneously on
-# all endpoints, assuming unequal covariance matrices for the groups, and in terms
-# of ratios.
+# A comparison of the groups B and H against the standard S, simultaneously on
+# all endpoints, assuming unequal covariance matrices for the groups, and for
+# ratios of means. This is an extension of the well-known Dunnett-test to the case
+# of heteroscedasticity and multiple endpoints, and in terms of ratios of means
+# instead of differences.
 
 data(coagulation)
 

@@ -1,6 +1,7 @@
 export(SimTestDiff, SimTestRat,
        SimCiDiff, SimCiRat,
-       ermvnorm)
+       DfSattDiff, DfSattRat,
+       ermvnorm, rcm)
 
 import(mvtnorm, multcomp, mratios)
 
@@ -9,3 +10,4 @@ S3method(summary, SimTest)
 
 S3method(print, SimCi)
 S3method(summary, SimCi)
+S3method(plot, SimCi)

@@ -7,9 +7,9 @@ Simultaneous tests for general contrasts (linear functions) of normal means (e.g
 variable (endpoint). The procedure of Hasler and Hothorn (2011) is applied for
 differences of means of normally distributed data. The covariance matrices
 (containing the covariances between the endpoints) may be assumed to be equal or
-possibly unequal for the different groups. For the case of only a single endpoint
-and unequal covariance matrices (variances), the procedure coincides with the PI
-procedure of Hasler and Hothorn (2008).
+possibly unequal for the different groups (Hasler, 2014). For the case of only a
+single endpoint and unequal covariance matrices (variances), the procedure
+coincides with the PI procedure of Hasler and Hothorn (2008).
 }
 \usage{
 SimTestDiff(data, grp, resp = NULL, type = "Dunnett", base = 1, ContrastMat = NULL,
@@ -68,10 +68,10 @@ multivariate \emph{t}-distribution is used to calculate (adjusted) \emph{p}-valu
 an admissible range and in the strong sense. The covariance matrices of the
 treatment groups (containing the covariances between the endpoints) can be assumed
 to be equal (\code{covar.equal=TRUE}) or unequal (\code{covar.equal=FALSE}). If
-being equal, the pooled covariance matrix is used, otherwise Satterthwaite
-approximations to the degrees of freedom are used according to Hasler and Hothorn
-(2008). Unequal covariance matrices occure if variances or correlations of some
-endpoints differ depending on the treatment groups.
+being equal, the pooled covariance matrix is used, otherwise approximations to the
+degrees of freedom (Satterthwaite, 1946) are used (see Hasler, 2014). Unequal
+covariance matrices occure if variances or correlations of some endpoints differ
+depending on the treatment groups.
 }
 \value{
 An object of class SimTest containing:
@@ -105,21 +105,26 @@ value(s) are used for the remaining comparisons or endpoints. If \code{Margin} i
 not specified, the default is 0.
 }
 \references{
+Hasler, M. (2014): Multiple contrast tests for multiple endpoints in the presence of 
+heteroscedasticity. \emph{The International Journal of Biostatistics} 10, 17--28.
+
 Hasler, M. and Hothorn, L.A. (2011): A Dunnett-type procedure for multiple endpoints.
 \emph{The International Journal of Biostatistics} 7, Article 3.
 
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence of
-heteroscedasticity. \emph{Biometrical Journal} 50, 793-800.
+heteroscedasticity. \emph{Biometrical Journal} 50, 793--800.
+
+Satterthwaite, F.E. (1946): An approximate distribution of estimates of variance
+components. \emph{Biometrics} 2, 110--114.
 }
 \author{ Mario Hasler }
 \seealso{ \code{\link{SimTestRat}}, \code{\link{SimCiDiff}},
-          \code{\link{SimCiRat}},  }
+          \code{\link{SimCiRat}} }
 \examples{
 # Example 1:
-# A Dunnett-test for the groups B and H against the standard S, on
-# the (single) endpoint Thromb.count, assuming unequal variances for
-# the groups. This is the well-known Dunnett-test but in the
-# presence of heteroscedasticity.
+# A comparison of the groups B and H against the standard S, on endpoint
+# Thromb.count, assuming unequal variances for the groups. This is an
+# extension of the well-known Dunnett-test to the case of heteroscedasticity.
 
 data(coagulation)
 
@@ -128,9 +133,10 @@ comp1 <- SimTestDiff(data=coagulation, grp="Group", resp="Thromb.count",
 comp1
 
 # Example 2:
-# A Dunnett-test for the groups B and H against the standard S,
-# simultaneously on all endpoints, assuming unequal covariance
-# matrices for the groups.
+# A comparison of the groups B and H against the standard S, simultaneously
+# on all endpoints, assuming unequal covariance matrices for the groups. This is
+# an extension of the well-known Dunnett-test to the case of heteroscedasticity
+# and for multiple endpoints.
 
 data(coagulation)
 

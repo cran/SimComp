@@ -60,8 +60,8 @@ if (!is.null(ContrastMat)) {
     rownames(Cmat) <- paste("C", 1:nrow(Cmat), sep="")
   }
 } else {
-  type <- match.arg(type, choices=c("Dunnett", "Tukey", "Sequen", "AVE", "GrandMean", "Changepoint", "Marcus", 
-    "McDermott", "Williams", "UmbrellaWilliams"))
+  type <- match.arg(type, choices=c("Dunnett", "Tukey", "Sequen", "AVE", "GrandMean", "Changepoint", 
+    "Marcus", "McDermott", "Williams", "UmbrellaWilliams"))
   names(ssvec) <- tr.names
   Cmat <- contrMat(n=ssvec, type=type, base=base)
 }
@@ -96,5 +96,6 @@ if (covar.equal==FALSE) {
 }
 class(out) <- "SimCi"
 return(out)
+
 
 }

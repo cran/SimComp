@@ -18,10 +18,14 @@ if (det(corr) <= 0) {
   stop("corr must be positive definite")
 }
 
-trafomat <- diag(sd)    # sd's on the diagonal
+if (length(sd)==1) {
+  trafomat <- sd
+} else {
+  trafomat <- diag(sd)
+}                    # sd's on the diagonal
 kovarmat <- trafomat%*%corr%*%trafomat
 Counter <- 0
- 
+
 repeat {
 
   Counter <- Counter+1
