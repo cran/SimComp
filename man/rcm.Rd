@@ -13,7 +13,7 @@ rcm(nrow = NULL, ncol = NULL)
 }
 \details{
 As a correlation matrix is symmetric, only one of \code{nrow} or \code{ncol}
-must be specified.
+needs to be specified.
 }
 \value{
 A symmetric correlation matrix with random elements.

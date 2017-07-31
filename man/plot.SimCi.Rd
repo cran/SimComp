@@ -46,19 +46,5 @@ interv2 <- SimCiDiff(data=coagulation, grp="Group", resp=c("Thromb.count","ADP",
   type="Dunnett", base=3, alternative="greater", covar.equal=FALSE)
 summary(interv2)
 par(mfrow=c(1,3)); plot(interv2)
-
-# Example 3:
-# Simultaneous confidence intervals for ratios of means, related to an all-pair
-# comparison of the groups B, H and S, simultaneously on all endpoints, assuming unequal
-# covariance matrices for the groups. This is an extension of the well-known Tukey-
-# intervals to the case of heteroscedasticity and multiple endpoints, and in terms of
-# ratios of means instead of differences.
-
-data(coagulation)
-
-interv3 <- SimCiRat(data=coagulation, grp="Group", resp=c("Thromb.count","ADP","TRAP"),
-  type="Tukey", alternative="two.sided", covar.equal=FALSE)
-summary(interv3)
-par(mfrow=c(3,1)); plot(interv3)
 }
 \keyword{ print }

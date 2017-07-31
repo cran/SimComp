@@ -1,9 +1,15 @@
-export(SimTestDiff, SimTestRat,
-       SimCiDiff, SimCiRat,
+export(SimTestDiff, SimTestDiff.default, SimTestDiff.formula,
+       SimTestRat,  SimTestRat.default,  SimTestRat.formula,
+       SimCiDiff,   SimCiDiff.default,   SimCiDiff.formula,
+       SimCiRat,    SimCiRat.default,    SimCiRat.formula,
        DfSattDiff, DfSattRat,
        ermvnorm, rcm)
 
 import(mvtnorm, multcomp, mratios)
+
+importFrom("graphics", "abline", "axis", "box", "par", "plot",
+           "points", "segments", "title")
+importFrom("stats", "cov", "cov2cor", "pt", "qt", "var", "na.omit") 
 
 S3method(print, SimTest)
 S3method(summary, SimTest)
@@ -11,3 +17,12 @@ S3method(summary, SimTest)
 S3method(print, SimCi)
 S3method(summary, SimCi)
 S3method(plot, SimCi)
+
+S3method(SimTestDiff, default)
+S3method(SimTestDiff, formula)
+S3method(SimTestRat, default)
+S3method(SimTestRat, formula)
+S3method(SimCiDiff, default)
+S3method(SimCiDiff, formula)
+S3method(SimCiRat, default)
+S3method(SimCiRat, formula)

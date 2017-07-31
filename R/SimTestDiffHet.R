@@ -1,61 +1,60 @@
 SimTestDiffHet <-
-function(trlist, grp, ntr, nep, ssvec, Cmat, alternative, Margin) {
+function(trlist, grp, ntr, nep, ssmat, ContrastMat, ncomp, alternative, 
+                           Margin, meanmat, CorrMatDat) {
 
 
-ncomp <- nrow(Cmat)                                                 # number of comparisons
-
-meanmat <- varmat <- matrix(nrow=ntr, ncol=nep)
-for (i in 1:ntr) { for (j in 1:nep) {
-  meanmat[i,j]=mean(trlist[[i]][,j]); varmat[i,j]=var(trlist[[i]][,j]) }}
-estimate <- Cmat%*%meanmat
+varmat  <- do.call(rbind, lapply(trlist, function(x) apply(x, 2, var)))
+estimate <- ContrastMat%*%meanmat
 
 defrmat <- matrix(nrow=ncomp, ncol=nep)
-for (j in 1:nep) { for (z in 1:ncomp) {
-defrmat[z,j]=( (sum((Cmat[z,])^2*varmat[,j]/ssvec))^2 ) / 
-             sum( ( (Cmat[z,])^4*varmat[,j]^2 ) / ( ssvec^2*(ssvec-1) ) ) }}
+for (j in 1:nep) {
+  defrmat[,j] <- DfSattDiff(n=ssmat[,1],sd=sqrt(varmat[,j]),ContrastMat=ContrastMat)
+}
 defrmat[defrmat<2] <- 2                                             # to be well-defined
-defrvec <- apply(X=defrmat, MARGIN=1, FUN=min)                      # minimum over the rows/endpoints
+defr <- matrix(apply(defrmat,1,min), nrow=ncomp, ncol=nep)          # matrix of dfs, minimum per row/contrast
 
-CovMatDat <- CorrMatDat <- list()                                   # list of covariance/correlation matrices of the data
-for (i in 1:ntr) { CovMatDat[[i]]  <- cov(trlist[[i]])
-                   CorrMatDat[[i]] <- cov2cor(CovMatDat[[i]]) }
+CovMatDat  <- lapply(trlist, cov)                                   # list of covariance matrices of the data
+if (is.null(CorrMatDat)) {
+  CorrMatDat <- lapply(CovMatDat,cov2cor)                           # list of correlation matrices of the data
+} else {
+  sdmat <- lapply(CovMatDat, function(x) sqrt( diag( diag(x),nrow=nep ) )) # sds on the diagonal
+  CovMatDat <- lapply(sdmat, function(x) x%*%CorrMatDat%*%x)        # final list of covariance matrices
+}
 
-M <- diag(1/ssvec)
+M <- diag(1/ssmat[,1])
 R <- NULL
 for (z in 1:ncomp) {
   Rrow <- NULL
   for (w in 1:ncomp) {
     Rpart <- matrix(nrow=nep,ncol=nep)
-    for (i in 1:nep) { for (h in 1:nep) {
-      Rpart[i,h]=( t(Cmat[z,])%*%diag(unlist( lapply( X=CovMatDat,FUN=function(x){x[i,h]} ) ))%*%M%*%(Cmat[w,]) ) /
-                 sqrt( ( t(Cmat[z,])%*%diag(varmat[,i])%*%M%*%(Cmat[z,]) ) *
-                       ( t(Cmat[w,])%*%diag(varmat[,h])%*%M%*%(Cmat[w,]) ) ) }
+    for (i in 1:nep) {
+      for (h in 1:nep) {
+        Rpart[i,h] <- ( t(ContrastMat[z,])%*%diag( sapply(CovMatDat, function(x) x[i,h]) )%*%M%*%
+                         (ContrastMat[w,]) ) /
+                      sqrt( ( t(ContrastMat[z,])%*%diag(varmat[,i])%*%M%*%(ContrastMat[z,]) ) *
+                            ( t(ContrastMat[w,])%*%diag(varmat[,h])%*%M%*%(ContrastMat[w,]) ) )
+      }
     }
     Rrow <- cbind(Rrow,Rpart)
   }
-  R <- rbind(R, Rrow)                                               # correlation matrix for test.stat
+  R <- rbind(R, Rrow)                                               # correlation matrix for multi-t
 }
 diag(R) <- 1
 
-test.stat <- p.val.adj <- p.val.raw <- matrix(nrow=ncomp, ncol=nep) # matrices of test statistics and p.vals
-for (z in 1:ncomp) { for (i in 1:nep) {
-  test.stat[z,i]=( (t(Cmat[z,])%*%meanmat[,i]) - Margin[z,i] ) /
-                 sqrt( t(Cmat[z,])%*%diag(varmat[,i])%*%M%*%(Cmat[z,]) )
-  if (alternative=="greater") {
-    p.val.adj[z,i]=1-pmvt(lower=-Inf,upper=rep(test.stat[z,i],times=ncomp*nep),df=as.integer(defrvec[z]),corr=R)[1]
-    p.val.raw[z,i]=pt(q=test.stat[z,i],df=defrmat[z,i],lower.tail=FALSE) }
-  if (alternative=="less") {
-    p.val.adj[z,i]=1-pmvt(lower=rep(test.stat[z,i],times=ncomp*nep),upper=Inf,df=as.integer(defrvec[z]),corr=R)[1]
-    p.val.raw[z,i]=pt(q=test.stat[z,i],df=defrmat[z,i],lower.tail=TRUE) }
-  if (alternative=="two.sided") {
-    p.val.adj[z,i]=1-pmvt(lower=rep(-abs(test.stat[z,i]),times=ncomp*nep),
-                   upper=rep(abs(test.stat[z,i]),times=ncomp*nep),df=as.integer(defrvec[z]),corr=R)[1]
-    p.val.raw[z,i]=min(pt(q=abs(test.stat[z,i]),df=defrmat[z,i],lower.tail=FALSE)*2,1) }
-}}
+statistic <- matrix(nrow=ncomp, ncol=nep)                           # matrix of test stats
+for (z in 1:ncomp) {
+  for (i in 1:nep) {
+    statistic[z,i] <- ( (t(ContrastMat[z,])%*%meanmat[,i]) - Margin[z,i] ) /
+                      sqrt( t(ContrastMat[z,])%*%diag(varmat[,i])%*%M%*%(ContrastMat[z,]) )
+  }
+}
+p.val <- SimTestP(ncomp=ncomp,nep=nep,alternative=alternative,statistic=statistic,
+                  defr.mul=defr,defr.uni=defrmat,R=R)
+p.val.adj <- p.val$p.val.adj; p.val.raw <- p.val$p.val.raw
 
-list(estimate=estimate, statistic=test.stat, p.val.raw=p.val.raw, p.val.adj=p.val.adj,
-     CovMatDat=CovMatDat, CorrMatDat=CorrMatDat, CorrMatComp=R, degr.fr=defrvec,
-     Cmat=Cmat, Margin=Margin, alternative=alternative)
+list(estimate=estimate, statistic=statistic, p.val.raw=p.val.raw, p.val.adj=p.val.adj,
+     CovMatDat=CovMatDat, CorrMatDat=CorrMatDat, CorrMatComp=R, degr.fr=defr,
+     ContrastMat=ContrastMat, alternative=alternative)
 
 
 }

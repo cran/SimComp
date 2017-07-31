@@ -29,7 +29,7 @@ for (i in 1:length(x$resp)) {
   axis(1, ...)
   axis(2, at=length(outEP$comparison):1, labels=outEP$comparison, las=1, ...)
   abline(h=yvals, lty=1, lwd=1, col="lightgray")
-  vl <- if ("NSD" %in% attributes(x)$names) {1} else {0}          # SimCiRat has attr "NSD"
+  vl <- if ("NSD" %in% attributes(x)$names) {1} else {0}            # SimCiRat has attr "NSD"
   abline(v=vl, lty=2, lwd=1, ...)    
   left  <- outEP$lower; left[!is.finite(left)]   <- min(c(0, xrange[1] * 2))
   right <- outEP$upper; right[!is.finite(right)] <- max(c(0, xrange[2] * 2))

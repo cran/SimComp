@@ -1,5 +1,5 @@
 DfSattDiff <-
-function(n,sd,type="Dunnett",base=1,ContrastMat=NULL) {
+function(n, sd, type="Dunnett", base=1, ContrastMat=NULL) {
 
 
 if (length(n)!=length(sd)) {
@@ -10,29 +10,26 @@ if (!is.null(ContrastMat)) {
   if (ncol(ContrastMat)!=length(n)) {
     stop("Number of columns of ContrastMat and length of n must be equal")
   }
-  C0 <- apply(X=ContrastMat, MARGIN=1, function(x) {
-    all(x==0)
-  })
-  if (any(C0)) {
-    cat("Warning: At least one row of ContrastMat is a vector with all components", "\n",
-        "equal to zero", "\n")
+  if (any(apply(ContrastMat==0, 1, all))) {
+    stop("At least one row of ContrastMat is a vector with all components", 
+         "\n", "equal to zero")
   }
-  Cmat <- ContrastMat
   type <- "User defined"
-  if (is.null(rownames(Cmat))) {
-    rownames(Cmat) <- paste("C", 1:nrow(Cmat), sep="")
+  if (is.null(rownames(ContrastMat))) {
+    rownames(ContrastMat) <- paste("C", 1:nrow(ContrastMat), sep="")
   }
 } else {
-  type <- match.arg(type, choices=c("Dunnett", "Tukey", "Sequen", "AVE", "GrandMean", "Changepoint", 
-    "Marcus", "McDermott", "Williams", "UmbrellaWilliams"))
-  Cmat <- contrMat(n=n, type=type, base=base)
+  type <- match.arg(type, choices=c("Dunnett","Tukey","Sequen","AVE","GrandMean","Changepoint",
+                                    "Marcus","McDermott","Williams","UmbrellaWilliams"))
+  ContrastMat <- contrMat(n=n, type=type, base=base)
 }
-comp.names <- rownames(Cmat)
+comp.names <- rownames(ContrastMat)
 
-defrvec <- numeric(nrow(Cmat))
-for (z in 1:nrow(Cmat)) {
-defrvec[z] <- ( (sum((Cmat[z,])^2*sd^2/n))^2 ) / 
-              sum( ( (Cmat[z,])^4*sd^4 ) / ( n^2*(n-1) ) ) }
+defrvec <- numeric(nrow(ContrastMat))
+for (z in 1:nrow(ContrastMat)) {
+  defrvec[z] <- ( (sum((ContrastMat[z,])^2*sd^2/n))^2 ) / 
+                sum( ( (ContrastMat[z,])^4*sd^4 ) / ( n^2*(n-1) ) )
+}
 names(defrvec) <- comp.names
 
 return(defrvec)

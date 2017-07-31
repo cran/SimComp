@@ -1,29 +1,17 @@
 ermvnorm <-
-function(n,mean,sd,corr=diag(rep(1,length(mean))),mnt=10000) {
+function(n, mean, sd, corr=diag(rep(1,length(mean))), mnt=10000) {
 
 
-if (n<3) {
-  stop("n must be greater than two")
-}
-if (length(mean)!=length(sd)) {
-  stop("Lengths of mean and sd must be equal")
-}
-if (nrow(corr)!=ncol(corr)) {
-  stop("Numbers of rows and columns of corr must be equal")
-}
+if (n<3) stop("n must be greater than two")
+if (length(mean)!=length(sd)) stop("Lengths of mean and sd must be equal")
+if (nrow(corr)!=ncol(corr)) stop("Numbers of rows and columns of corr must be equal")
 if (nrow(corr)!=length(mean) | ncol(corr)!=length(mean)) {
   stop("Number of rows (and columns) of corr and length of mean must be equal")
 }
-if (det(corr) <= 0) {
-  stop("corr must be positive definite")
-}
+if (det(corr)<=0) stop("corr must be positive definite")
 
-if (length(sd)==1) {
-  trafomat <- sd
-} else {
-  trafomat <- diag(sd)
-}                    # sd's on the diagonal
-kovarmat <- trafomat%*%corr%*%trafomat
+sdmat <- diag(sd, nrow=length(sd))                                  # sds on the diagonal
+kovarmat <- sdmat%*%corr%*%sdmat
 Counter <- 0
 
 repeat {

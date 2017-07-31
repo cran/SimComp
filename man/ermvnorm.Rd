@@ -4,7 +4,7 @@
 \description{
 Random numbers of the multivariate normal distribution with EXACT mean vector, EXACT
 variance vector and approximate correlation matrix. This function is based on the
-function \code{rmvnorm} of the package mvtnorm.
+function \code{rmvnorm} of the package \pkg{mvtnorm}.
 }
 \usage{
 ermvnorm(n, mean, sd, corr = diag(rep(1, length(mean))), mnt = 10000)
@@ -37,17 +37,17 @@ set is obtained, or until the maximum number of tries \code{mnt} is reached.
 \value{
 A matrix of random numbers with dimension n * length(mean).
 }
+\note{
+This function is to be used only with caution. Usually, random numbers with exact
+mean and standard deviation are not intended to be used. For example, simulations
+concerning type I error or power of statistical tests cannot be based on
+\code{ermvnorm}.
+}
 \references{
 Hothorn, T. et al. (2001): On Multivariate \emph{t} and Gauss Probabilities in R.
 \emph{R News} 1, 27--29.
 }
 \author{ Gemechis Djira Dilba and Mario Hasler}
-\note{
-This function is to be used only with caution. Normally, random numbers with exact
-mean and standard deviation are not intended to be used. For example, simulations
-concerning type I error or power of statistical tests cannot be based on
-\code{ermvnorm}.
-}
 \seealso{ \code{\link{rmvnorm}}, \code{\link{rcm}} }
 \examples{
 # Example 1:

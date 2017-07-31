@@ -15,8 +15,9 @@ respectively.
   \item{\dots}{ arguments to be passed to \code{print} }
 }
 \value{
-A print out containing the estimates, raw and simultaneous confidence
-intervals computed by \code{SimCiDiff} or \code{SimCiRat}, respectively.
+A print out containing the estimates, degrees of freedom, raw and 
+simultaneous confidence intervals computed by \code{SimCiDiff} or 
+\code{SimCiRat}, respectively.
 }
 \author{ Mario Hasler }
 \seealso{ \code{\link{print.SimTest}} }

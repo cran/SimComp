@@ -15,9 +15,9 @@ respectively.
   \item{\dots}{ arguments to be passed to \code{print} }
 }
 \value{
-A print out containing the margins, estimates, test statistics, raw and
-adjusted \emph{p}-values computed by \code{SimTestDiff} or
-\code{SimTestRat}, respectively.
+A print out containing the margins, estimates, test statistics, degrees of 
+freedom, raw and adjusted \emph{p}-values computed by \code{SimTestDiff} 
+or \code{SimTestRat}, respectively.
 }
 \author{ Mario Hasler }
 \seealso{ \code{\link{print.SimCi}} }

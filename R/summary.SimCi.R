@@ -1,17 +1,29 @@
 summary.SimCi <-
-function(object,digits=4,...) {
+function(object, digits=4, ...) {
 
 
 cat("", "\n")
 if (object$test.class=="differences") {
-  cat("Contrast matrix:", "\n")
-  print(object$Cmat)
+  if (!is.list(object$ContrastMat)) {
+    cat("Contrast matrix:", "\n")
+  } else {
+    cat("Contrast matrices:", "\n")
+  }
+  print(object$ContrastMat)
 } else {
-  cat("Numerator contrast matrix:", "\n")
-  print(object$Num.Contrast)
-  cat("", "\n")
-  cat("Denominator contrast matrix:", "\n")
-  print(object$Den.Contrast)
+  if (!is.list(object$Num.Contrast)) {
+    cat("Numerator contrast matrix:", "\n")
+    print(object$Num.Contrast)
+    cat("", "\n")
+    cat("Denominator contrast matrix:", "\n")
+    print(object$Den.Contrast)
+  } else {
+    cat("Numerator contrast matrices:", "\n")
+    print(object$Num.Contrast)
+    cat("", "\n")
+    cat("Denominator contrast matrices:", "\n")
+    print(object$Den.Contrast)
+  }
 }
 
 cat("", "\n")
@@ -20,7 +32,7 @@ if (object$covar.equal==TRUE) {
   print(round(object$CovMatDat, digits), digits=digits)
 } else {
   cat("Estimated covariance matrices of the data:", "\n")
-  print(lapply(object$CovMatDat, FUN=round, digits=digits), digits=digits)
+  print(lapply(object$CovMatDat, round, digits=digits), digits=digits)
 }
 
 cat("", "\n")
@@ -29,7 +41,7 @@ if (object$covar.equal==TRUE) {
   print(round(object$CorrMatDat, digits), digits=digits)
 } else {
   cat("Estimated correlation matrices of the data:", "\n")
-  print(lapply(object$CorrMatDat, FUN=round, digits=digits), digits=digits)
+  print(lapply(object$CorrMatDat, round, digits=digits), digits=digits)
 }
 
 cat("", "\n")
@@ -38,15 +50,16 @@ print(round(object$CorrMatComp,digits), digits=digits)
 
 comparison <- rep(object$comp.names, each=length(object$resp))
 endpoint <- rep(object$resp, times=length(object$comp.names))
-estimate <- lower.raw <- upper.raw <- lower <- upper <- NULL
+estimate <- degr.fr <- lower.raw <- upper.raw <- lower <- upper <- NULL
 for (i in 1:length(object$comp.names)) {
-  estimate <- c(estimate, round(object$estimate[i,],digits))
+  estimate  <- c(estimate,  round(object$estimate[i,], digits))
+  degr.fr   <- c(degr.fr,   round(object$degr.fr[i,],  digits))
   lower.raw <- c(lower.raw, round(object$lower.raw[i,],digits))
   upper.raw <- c(upper.raw, round(object$upper.raw[i,],digits))
-  lower <- c(lower, round(object$lower[i,],digits))
-  upper <- c(upper, round(object$upper[i,],digits))
+  lower     <- c(lower,     round(object$lower[i,],    digits))
+  upper     <- c(upper,     round(object$upper[i,],    digits))
 }
-out <- data.frame(comparison, endpoint, estimate, lower.raw, upper.raw, lower, upper)
+out <- data.frame(comparison, endpoint, estimate, degr.fr, lower.raw, upper.raw, lower, upper)
 cat("", "\n")
 print(out, digits=digits)
 cat("", "\n")
