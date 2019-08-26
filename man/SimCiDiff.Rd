@@ -8,12 +8,13 @@ Means of Multiple Endpoints }
 Simultaneous confidence intervals for general contrasts (linear functions) of 
 normal means (e.g., "Dunnett", "Tukey", "Williams" ect.), and for single or 
 multiple endpoints (primary response variables) simultaneously. The procedure of 
-Hasler and Hothorn (2011) is applied for differences of means of normally 
-distributed data. The variances/ covariance matrices of the treatment groups 
-(containing the covariances between the endpoints) may be assumed to be equal or 
-possibly unequal for the different groups (Hasler, 2014). For the case of only a 
-single endpoint and unequal covariance matrices (variances), the procedure 
-coincides with the PI procedure of Hasler and Hothorn (2008).
+Hasler and Hothorn (2011) <doi:10.2202/1557-4679.1258> is applied for 
+differences of means of normally distributed data. The variances/ covariance 
+matrices of the treatment groups (containing the covariances between the 
+endpoints) may be assumed to be equal or possibly unequal for the different 
+groups (Hasler, 2014 <doi:10.1515/ijb-2012-0015>). For the case of only a single 
+endpoint and unequal covariance matrices (variances), the procedure coincides 
+with the PI procedure of Hasler and Hothorn (2008) <doi:10.1002/bimj.200710466>.
 }
 \usage{
 \method{SimCiDiff}{default}(data, grp, resp = NULL, na.action = "na.error", type = "Dunnett", 
@@ -79,15 +80,16 @@ pair comparison of Tukey (1953) and the many-to-one comparison of Dunnett (1955)
 implemented, but allowing for heteroscedasticity and multiple endpoints. The user is 
 also free to create other interesting problem-specific contrasts. Approximate 
 multivariate \emph{t}-distributions are used to calculate lower and upper limits 
-(see Hasler and Hothorn, 2011; Hasler, 2014). Simultaneous tests based on these 
-intervals control the familywise error rate in admissible ranges and in the strong 
-sense. The variances/ covariance matrices of the treatment groups (containing the 
-covariances between the endpoints) can be assumed to be equal 
+(Hasler and Hothorn, 2011 <doi:10.2202/1557-4679.1258>). Simultaneous tests based on 
+these intervals control the familywise error rate in admissible ranges and in the 
+strong sense. The variances/ covariance matrices of the treatment groups (containing 
+the covariances between the endpoints) can be assumed to be equal 
 (\code{covar.equal=TRUE}) or unequal (\code{covar.equal=FALSE}). If being equal, the 
 pooled variance/ covariance matrix is used, otherwise approximations to the degrees 
-of freedom (Satterthwaite, 1946) are used (see Hasler, 2014; and Hasler and Hothorn, 
-2008). Unequal covariance matrices occure if variances or correlations of some 
-endpoints differ depending on the treatment groups.
+of freedom (Satterthwaite, 1946) are used (Hasler, 2014 <doi:10.1515/ijb-2012-0015>; 
+Hasler and Hothorn, 2008 <doi:10.1002/bimj.200710466>). Unequal covariance matrices 
+occure if variances or correlations of some endpoints differ depending on the 
+treatment groups.
 }
 \value{
 An object of class SimCi containing:
@@ -118,13 +120,13 @@ All intervals have the same direction for all comparisons and endpoints
 \references{
 Hasler, M. (2014): Multiple contrast tests for multiple endpoints in the presence of 
 heteroscedasticity. \emph{The International Journal of Biostatistics} 10, 17--28, 
-<DOI:10.1515/ijb-2012-0015>.
+<doi:10.1515/ijb-2012-0015>.
 
 Hasler, M. and Hothorn, L.A. (2011): A Dunnett-type procedure for multiple endpoints.
-\emph{The International Journal of Biostatistics} 7, Article 3, <DOI:10.2202/1557-4679.1258>.
+\emph{The International Journal of Biostatistics} 7, Article 3, <doi:10.2202/1557-4679.1258>.
 
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence of
-heteroscedasticity. \emph{Biometrical Journal} 50, 793--800, <DOI:10.1002/bimj.200710466>.
+heteroscedasticity. \emph{Biometrical Journal} 50, 793--800, <doi:10.1002/bimj.200710466>.
 }
 \author{ Mario Hasler }
 \seealso{ \code{\link{SimTestDiff}}, \code{\link{SimTestRat}}, 

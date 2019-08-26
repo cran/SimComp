@@ -54,11 +54,12 @@ however, the degree of freedom of a \emph{t}-test must be decreased according to
 Welch (1938) to come to an approximate solution. Degrees of freedom according to
 Satterthwaite (1946) refer to any linear combinations (contrasts) of normal means.
 They are applied, for example, when doing multiple contrast tests for heteroscedastic
-data according to Hasler and Hothorn (2008) or Hasler (2014). Like Welch (1938), 
-Satterthwaite (1946) approximated the degree of freedom by matching first and second
-moments. The resulting degree of freedom then depends on the numerator contrast, the 
-denominator contrast, the (relative) margin to test against, and on the sample sizes 
-and sample variances per group. If \code{Margin=1} or \code{Margin=NULL} (default), 
+data according to Hasler and Hothorn (2008) <doi:10.1002/bimj.200710466> or 
+Hasler (2014) <doi:10.1515/ijb-2012-0015>. Like Welch (1938), Satterthwaite (1946) 
+approximated the degree of freedom by matching first and second moments. The 
+resulting degree of freedom then depends on the numerator contrast, the denominator 
+contrast, the (relative) margin to test against, and on the sample sizes and sample 
+variances per group. If \code{Margin=1} or \code{Margin=NULL} (default), 
 the result coincides with the result of \code{DfSattDiff()}.
 }
 \value{
@@ -72,10 +73,10 @@ automatically if \code{covar.equal=FALSE} (default). You don't need to apply
 \references{
 Hasler, M. (2014): Multiple contrast tests for multiple endpoints in the presence of 
 heteroscedasticity. \emph{The International Journal of Biostatistics} 10, 17--28, 
-<DOI:10.1515/ijb-2012-0015>.
+<doi:10.1515/ijb-2012-0015>.
 
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence of
-heteroscedasticity. \emph{Biometrical Journal} 50, 793--800, <DOI:10.1002/bimj.200710466>.
+heteroscedasticity. \emph{Biometrical Journal} 50, 793--800, <doi:10.1002/bimj.200710466>.
 
 Satterthwaite, F.E. (1946): An approximate distribution of estimates of variance
 components. \emph{Biometrics} 2, 110--114.

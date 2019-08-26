@@ -8,12 +8,13 @@ Endpoints }
 Simultaneous tests for general contrasts (linear functions) of normal means (e.g.,
 "Dunnett", "Tukey", "Williams" ect.), and for single or multiple endpoints 
 (primary response variables) simultaneously. The procedure of Hasler and Hothorn 
-(2012) is applied for ratios of means of normally distributed data. The variances/ 
-covariance matrices of the treatment groups (containing the covariances between 
-the endpoints) may be assumed to be equal or possibly unequal for the different 
-groups (Hasler, 2014). For the case of only a single endpoint and unequal 
-covariance matrices (variances), the procedure coincides with the PI procedure 
-of Hasler and Hothorn (2008).
+(2012) <doi:10.1080/19466315.2011.633868> is applied for ratios of means of 
+normally distributed data. The variances/ covariance matrices of the treatment 
+groups (containing the covariances between the endpoints) may be assumed to be 
+equal or possibly unequal for the different groups (Hasler, 2014 
+<doi:10.1515/ijb-2012-0015>). For the case of only a single endpoint and unequal 
+covariance matrices (variances), the procedure coincides with the PI procedure of 
+Hasler and Hothorn (2008) <doi:10.1002/bimj.200710466>.
 }
 \usage{
 \method{SimTestRat}{default}(data, grp, resp = NULL, na.action = "na.error", type = "Dunnett", 
@@ -83,15 +84,15 @@ to-one comparison of Dunnett (1955) are implemented, but allowing for
 heteroscedasticity and multiple endpoints, and in terms of ratios of means. The user 
 is also free to create other interesting problem-specific contrasts. Approximate 
 multivariate \emph{t}-distributions are used to calculate (adjusted) \emph{p}-values 
-(see Hasler and Hothorn, 2012; Hasler, 2014). This approach controls the familywise 
-error rate in admissible ranges and in the strong sense. The variances/ covariance 
-matrices of the treatment groups (containing the covariances between the endpoints) 
-can be assumed to be equal (\code{covar.equal=TRUE}) or unequal 
-(\code{covar.equal=FALSE}). If being equal, the pooled variance/ covariance 
+(Hasler and Hothorn, 2012 <doi:10.1080/19466315.2011.633868>). This approach 
+controls the familywise error rate in admissible ranges and in the strong sense. The 
+variances/ covariance matrices of the treatment groups (containing the covariances 
+between the endpoints) can be assumed to be equal (\code{covar.equal=TRUE}) or 
+unequal (\code{covar.equal=FALSE}). If being equal, the pooled variance/ covariance 
 matrix is used, otherwise approximations to the degrees of freedom (Satterthwaite, 
-1946) are used (see Hasler, 2014; and Hasler and Hothorn, 2008). Unequal 
-covariance matrices occure if variances or correlations of some endpoints differ 
-depending on the treatment groups.
+1946) are used (Hasler, 2014 <doi:10.1515/ijb-2012-0015>; Hasler and Hothorn, 2008 
+<doi:10.1002/bimj.200710466>). Unequal covariance matrices occure if variances or 
+correlations of some endpoints differ depending on the treatment groups.
 }
 \value{
 An object of class SimTest containing:
@@ -124,17 +125,17 @@ value(s) are used for the remaining comparisons or endpoints.
 \references{
 Hasler, M. (2014): Multiple contrast tests for multiple endpoints in the presence of 
 heteroscedasticity. \emph{The International Journal of Biostatistics} 10, 17--28, 
-<DOI:10.1515/ijb-2012-0015>.
+<doi:10.1515/ijb-2012-0015>.
 
 Hasler, M. and Hothorn, L.A. (2012): A multivariate Williams-type trend procedure.
-\emph{Statistics in Biopharmaceutical Research} 4, 57--65, <DOI:10.1080/19466315.2011.633868>.
+\emph{Statistics in Biopharmaceutical Research} 4, 57--65, <doi:10.1080/19466315.2011.633868>.
 
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence of
-heteroscedasticity. \emph{Biometrical Journal} 50, 793--800, <DOI:10.1002/bimj.200710466>.
+heteroscedasticity. \emph{Biometrical Journal} 50, 793--800, <doi:10.1002/bimj.200710466>.
 
 Dilba, G. et al. (2006): Simultaneous confidence sets and confidence intervals for
 multiple ratios. \emph{Journal of Statistical Planning and Inference} 136, 2640--2658,
-<DOI:10.1016/j.jspi.2004.11.009>.
+<doi:10.1016/j.jspi.2004.11.009>.
 }
 \author{ Mario Hasler }
 \seealso{ \code{\link{SimCiRat}}, \code{\link{SimTestDiff}}, 

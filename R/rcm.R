@@ -19,7 +19,7 @@ if (!is.numeric(nrow) | length(nrow)!=1) {
 
 mat <- rmvnorm(nrow,rep(0,nrow),diag(nrow))
 for (i in 1:nrow) {
-  mat[i,] <- mat[i,]/sqrt(t(mat[i,])%*%mat[i,])
+  mat[i,] <- mat[i,]/as.numeric(sqrt(t(mat[i,])%*%mat[i,]))
 }
 return(mat%*%t(mat))
 

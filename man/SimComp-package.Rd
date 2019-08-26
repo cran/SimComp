@@ -23,22 +23,25 @@ Maintainer: \packageMaintainer{SimComp}
 Thanks to: Frank Schaarschmidt, Gemechis Djira Dilba, Kornelius Rohmeyer
 }
 \references{
+Hasler, M. and Hothorn, L.A. (2018): Multi-arm trials with multiple primary endpoints and
+missing values. \emph{Statistics in Medicine} 37, 710--721, <doi:10.1002/sim.7542>.
+
 Hasler, M. (2014): Multiple contrast tests for multiple endpoints in the presence of 
 heteroscedasticity. \emph{The International Journal of Biostatistics} 10, 17--28, 
-<DOI:10.1515/ijb-2012-0015>.
+<doi:10.1515/ijb-2012-0015>.
 
 Hasler, M. and Hothorn, L.A. (2012): A multivariate Williams-type trend procedure.
-\emph{Statistics in Biopharmaceutical Research} 4, 57--65, <DOI:10.1080/19466315.2011.633868>.
+\emph{Statistics in Biopharmaceutical Research} 4, 57--65, <doi:10.1080/19466315.2011.633868>.
 
 Hasler, M. and Hothorn, L.A. (2011): A Dunnett-type procedure for multiple endpoints.
-\emph{The International Journal of Biostatistics} 7, Article 3, <DOI:10.2202/1557-4679.1258>.
+\emph{The International Journal of Biostatistics} 7, Article 3, <doi:10.2202/1557-4679.1258>.
 
 Hasler, M. and Hothorn, L.A. (2008): Multiple contrast tests in the presence of
-heteroscedasticity. \emph{Biometrical Journal} 50, 793--800, <DOI:10.1002/bimj.200710466>.
+heteroscedasticity. \emph{Biometrical Journal} 50, 793--800, <doi:10.1002/bimj.200710466>.
 
 Dilba, G. et al. (2006): Simultaneous confidence sets and confidence intervals for
 multiple ratios. \emph{Journal of Statistical Planning and Inference} 136, 2640--2658,
-<DOI:10.1016/j.jspi.2004.11.009>.
+<doi:10.1016/j.jspi.2004.11.009>.
 }
 \keyword{ package }
 \seealso{ \code{\link[mratios:mratios-package]{multcomp}},
