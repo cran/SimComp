@@ -38,11 +38,11 @@ if (na.action=="multi.df") {
 }
 if (covar.equal==FALSE) {
   names(out$CovMatDat) <- check.out$tr.names
-  if (class(check.out$CorrMatDat)!="UserMatrix") {
+  if (!inherits(check.out$CorrMatDat, "UserMatrix")) {
     names(out$CorrMatDat) <- check.out$tr.names
   }
 }
-if ( (class(check.out$CorrMatDat)=="UserMatrix") & (covar.equal==TRUE) ) {
+if ( (inherits(check.out$CorrMatDat, "UserMatrix")) & (covar.equal==TRUE) ) {
   rownames(out$CovMatDat) <- colnames(out$CovMatDat) <- check.out$resp
 }
 class(out) <- "SimTest"

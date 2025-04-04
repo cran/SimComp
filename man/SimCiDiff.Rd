@@ -34,8 +34,9 @@ with the PI procedure of Hasler and Hothorn (2008) <doi:10.1002/bimj.200710466>.
   \item{na.action}{ a character string indicating what should happen when the data 
                     contain \code{NAs};
                     if \code{na.action="na.error"} (default) the procedure stops 
-                    with an error message; if \code{na.action="multi.df"} a new 
-                    experimental version is used (details will follow soon) }
+                    with an error message; if \code{na.action="multi.df"} multiple 
+                    marginal degrees of freedom are used to adjust for the missing 
+                    values problem (not yet available) }
   \item{type}{ a character string, defining the type of contrast, with the following
                options:
                \itemize{

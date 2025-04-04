@@ -44,8 +44,6 @@ multiple ratios. \emph{Journal of Statistical Planning and Inference} 136, 2640-
 <doi:10.1016/j.jspi.2004.11.009>.
 }
 \keyword{ package }
-\seealso{ \code{\link[mratios:mratios-package]{multcomp}},
-          \code{\link[mratios:mratios-package]{mratios}} }
 \examples{
 # Example 1:
 # A comparison of the groups B and H against the standard S, for endpoint

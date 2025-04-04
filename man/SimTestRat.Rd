@@ -34,8 +34,9 @@ Hasler and Hothorn (2008) <doi:10.1002/bimj.200710466>.
   \item{na.action}{ a character string indicating what should happen when the data 
                     contain \code{NAs};
                     if \code{na.action="na.error"} (default) the procedure stops 
-                    with an error message; if \code{na.action="multi.df"} a new 
-                    experimental version is used (details will follow soon) }
+                    with an error message; if \code{na.action="multi.df"} multiple 
+                    marginal degrees of freedom are used to adjust for the missing 
+                    values problem (not yet available) }
   \item{type}{ a character string, defining the type of contrast, with the following
                options:
                \itemize{
@@ -110,8 +111,7 @@ An object of class SimTest containing:
 }
 \note{
 By default (\code{na.action="na.error"}), the procedure stops if there are 
-missing values. A new experimental version for missing values is used if 
-\code{na.action="multi.df"}. If \code{covar.equal=TRUE}, the number of endpoints 
+missing values. If \code{covar.equal=TRUE}, the number of endpoints 
 must not be greater than the total sample size minus the number of treatment 
 groups. If \code{covar.equal=FALSE}, the number of endpoints must not be greater 
 than the minimal sample size minus 1. Otherwise the procedure stops.

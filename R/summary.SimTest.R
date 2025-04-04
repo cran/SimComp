@@ -37,7 +37,7 @@ if (object$covar.equal==TRUE) {
 
 cat("", "\n")
 
-if (class(object$CorrMatDat)=="UserMatrix") {
+if (inherits(object$CorrMatDat, "UserMatrix")) {
   cat("Specified common correlation matrix of the data:", "\n")
   print(round(object$CorrMatDat, digits), digits=digits)
 } else {

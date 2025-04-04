@@ -4,7 +4,7 @@
 \description{
 Random numbers of the multivariate normal distribution with EXACT mean vector, EXACT
 variance vector and approximate correlation matrix. This function is based on the
-function \code{rmvnorm} of the package \pkg{mvtnorm}.
+function \code{\link[mvtnorm]{rmvnorm}}.
 }
 \usage{
 ermvnorm(n, mean, sd, corr = diag(rep(1, length(mean))), mnt = 10000)
@@ -21,13 +21,13 @@ Unfortunately, it's very common to present only summary statistics in the litera
 when evaluating real data. This makes it hard to retrace or to verify the related
 statistical evaluation. Also, the use of such data as an example for other
 statistical tests is hardly possible. For that reason, \code{ermvnorm} allows to
-reproduce data by simulation. In contrast to \code{rmvnorm} of the package mvtnorm,
+reproduce data by simulation. In contrast to \code{\link[mvtnorm]{rmvnorm}},
 the function \code{ermvnorm} produces random numbers which have EXACTLY the same
 paramer values as specified by \code{mean} and \code{sd}. The correlation matrix
 \code{corr} is met only approximately.
 
-The simple idea behind \code{ermvnorm} is to apply \code{rmvnorm} of the package
-mvtnorm, but only for the first n-2 random numbers. The remaining 2 numbers are
+The simple idea behind \code{ermvnorm} is to apply \code{\link[mvtnorm]{rmvnorm}}, 
+but only for the first n-2 random numbers. The remaining 2 numbers are
 obtained by solving a quadratic equation to achieve the specified values for the
 mean vector and for the vector of standard deviations. Depending on the n-2 random
 numbers, the underlying quadratic equation can possibly have no solution. In this
@@ -41,14 +41,15 @@ A matrix of random numbers with dimension n * length(mean).
 This function is to be used only with caution. Usually, random numbers with exact
 mean and standard deviation are not intended to be used. For example, simulations
 concerning type I error or power of statistical tests cannot be based on
-\code{ermvnorm}.
+\code{ermvnorm}. However, \code{ermvnorm} can strongly be recommended for 
+meta-analyses or re-evaluations of results already published.
 }
 \references{
 Hothorn, T. et al. (2001): On Multivariate \emph{t} and Gauss Probabilities in R.
 \emph{R News} 1, 27--29.
 }
 \author{ Gemechis Djira Dilba and Mario Hasler}
-\seealso{ \code{\link{rmvnorm}}, \code{\link{rcm}} }
+\seealso{ \code{\link[mvtnorm]{rmvnorm}}, \code{\link{rcm}} }
 \examples{
 # Example 1:
 # A dataset representing one endpoint.

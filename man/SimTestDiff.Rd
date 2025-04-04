@@ -109,11 +109,12 @@ An object of class SimTest containing:
 }
 \note{
 By default (\code{na.action="na.error"}), the procedure stops if there are 
-missing values. A new experimental version for missing values is used if 
-\code{na.action="multi.df"}. If \code{covar.equal=TRUE}, the number of endpoints 
-must not be greater than the total sample size minus the number of treatment 
-groups. If \code{covar.equal=FALSE}, the number of endpoints must not be greater 
-than the minimal sample size minus 1. Otherwise the procedure stops.
+missing values. For \code{na.action="multi.df"}, multiple degrees of freedom are 
+applied according to Hasler and Hothorn (2018). If \code{covar.equal=TRUE}, the 
+number of endpoints must not be greater than the total sample size minus the 
+number of treatment groups. If \code{covar.equal=FALSE}, the number of endpoints 
+must not be greater than the minimal sample size minus 1. Otherwise the procedure 
+stops.
 
 All hypotheses are tested with the same test direction for all comparisons and
 endpoints (\code{alternative="..."}). In case of doubt, use \code{"two.sided"}.
